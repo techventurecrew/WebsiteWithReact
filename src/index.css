@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: white;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: 200% 200%;
+    animation: gradientMove 4s ease infinite;
+    z-index: 1;
+}
+
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.navlinks {
+    /* padding: 2px 1rem; */
+
+    &:hover {
+        /* padding: 2rem; */
+        background-color: brown;
+    }
+}
+
+.card-angled {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
