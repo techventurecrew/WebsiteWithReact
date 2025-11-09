@@ -7,7 +7,7 @@ import FooterSection from './components/Footer'
 
 
 import Home from './pages/Home/Home';
-import Services from './pages/Services/Services';
+import Services from './pages/Servicess/Services';
 import ContactSection from './pages/Contact/Contact';
 import Projects from './pages/Projects/Projects';
 import About from './pages/About/About';
