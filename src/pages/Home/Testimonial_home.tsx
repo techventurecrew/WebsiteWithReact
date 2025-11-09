@@ -8,18 +8,18 @@ const TestimonialsSection = () => {
     {
       quote: "They're professional, trustworthy, and creative. With their help, our digital presence has grown stronger, and we've built better connections with our customers.",
       author: "Sachin Goel",
-      position: "CEO of Oneness"
+      position: "CEO of Oneness",
     },
     {
       quote: "Working with Crew Tech Venture transformed our business. Their innovative approach and dedication to excellence exceeded all our expectations.",
       author: "Priya Sharma",
-      position: "Founder of TechStart"
+      position: "Founder of TechStart",
     },
     {
       quote: "The team delivered exceptional results on time and within budget. Their expertise in modern web development is truly impressive.",
       author: "Rahul Mehta",
-      position: "Director of Digital Solutions"
-    }
+      position: "Director of Digital Solutions",
+    },
   ];
 
   const nextTestimonial = () => {
@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
   };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
@@ -46,28 +46,28 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Testimonial Carousel */}
-        <div className="relative flex items-center justify-center gap-8">
+        <div className="relative flex items-center justify-center">
           {/* Previous Button */}
           <button
             onClick={prevTestimonial}
-            className="flex-shrink-0 w-16 h-16 rounded-full bg-gray-100 hover:bg-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+            className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-100 hover:bg-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-8 h-8 text-orange-500" />
+            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-orange-500" />
           </button>
 
           {/* Testimonial Card */}
-          <div className="flex-1 max-w-5xl">
-            <div className="border-4 border-orange-500 rounded-3xl p-8 sm:p-12 md:p-16 bg-white shadow-xl transition-all duration-500">
-              <div className="text-center space-y-8">
+          <div className="flex-1 max-w-full md:max-w-5xl">
+            <div className="border-4 border-orange-500 rounded-3xl p-6 sm:p-8 md:p-12 bg-white shadow-xl transition-all duration-500">
+              <div className="text-center space-y-6 sm:space-y-8">
                 {/* Quote */}
-                <p className="text-xl sm:text-2xl md:text-3xl text-gray-600 italic leading-relaxed">
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-600 italic leading-relaxed">
                   "{testimonials[currentIndex].quote}"
                 </p>
 
                 {/* Author */}
-                <div className="pt-6">
-                  <p className="text-xl sm:text-2xl font-bold text-gray-900">
+                <div className="pt-4 sm:pt-6">
+                  <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
                     {testimonials[currentIndex].author}
                     <span className="text-gray-600 font-normal italic">
                       , {testimonials[currentIndex].position}
@@ -81,23 +81,23 @@ const TestimonialsSection = () => {
           {/* Next Button */}
           <button
             onClick={nextTestimonial}
-            className="flex-shrink-0 w-16 h-16 rounded-full bg-gray-100 hover:bg-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+            className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-100 hover:bg-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="w-8 h-8 text-orange-500" />
+            <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-orange-500" />
           </button>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-3 mt-12">
+        <div className="flex justify-center gap-2 sm:gap-3 mt-8 sm:mt-12">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`transition-all duration-300 rounded-full ${
                 currentIndex === index
-                  ? 'w-3 h-3 bg-orange-500'
-                  : 'w-3 h-3 bg-gray-300 hover:bg-orange-300'
+                  ? 'w-3 h-3 sm:w-4 sm:h-4 bg-orange-500'
+                  : 'w-3 h-3 sm:w-4 sm:h-4 bg-gray-300 hover:bg-orange-300'
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
