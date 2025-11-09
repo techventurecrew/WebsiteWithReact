@@ -19,7 +19,10 @@ const CTASection = () => {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <button className="px-10 py-4 bg-orange-500 text-white rounded-xl font-semibold text-lg shadow-lg hover:bg-orange-600 transform hover:scale-105 transition-all duration-300">
+              <button
+                          onClick={() => window.location.href = 'contact'}
+
+              className="px-10 py-4 bg-orange-500 text-white rounded-xl font-semibold text-lg shadow-lg hover:bg-orange-600 transform hover:scale-105 transition-all duration-300">
                 Get in Touch
               </button>
             </div>

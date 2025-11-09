@@ -166,7 +166,7 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Category Tabs */}
-                <div className="flex flex-wrap justify-center gap-3 mb-16">
+                <div className="flex flex-wrap justify-center gap-3 mb-16 ">
                     {categories.map((category) => (
                         <button
                             key={category}
@@ -174,9 +174,9 @@ const ProjectsSection = () => {
                                 setActiveCategory(category);
                                 setCurrentSlide(0);
                             }}
-                            className={`px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 ${activeCategory === category
-                                ? 'bg-orange-500 text-white shadow-lg'
-                                : 'bg-white text-orange-500 border-2 border-orange-500 hover:bg-orange-50'
+                            className={`w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 ${activeCategory === category
+                                    ? 'bg-orange-500 text-white shadow-lg'
+                                    : 'bg-white text-orange-500 border-2 border-orange-500 hover:bg-orange-50'
                                 }`}
                         >
                             {category}

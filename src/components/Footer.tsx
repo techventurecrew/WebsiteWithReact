@@ -22,9 +22,9 @@ const FooterSection = () => {
     <footer className="bg-gradient-to-br from-indigo-950 via-blue-930 to-indigo-950 text-white relative overflow-hidden">    
     
 
-      <div className="relative z-10 max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col items-start">
+      <div className="relative z-10 max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex flex-col items-start">
         {/* Footer Heading */}
-        <h1 className="absolute top-8 left-8 text-4xl font-bold text-orange-500 block">
+        <h1 className="absolute top-6 left-8 text-4xl font-bold text-orange-500 block">
           CREW TECHVENTURE
         </h1>
 

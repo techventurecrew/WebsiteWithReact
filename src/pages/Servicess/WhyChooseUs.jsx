@@ -63,7 +63,10 @@ const WhyChooseUsSection = () => {
                         Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi., mattis
                         ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus..
                     </p>
-                    <button className="bg-white text-orange-500 px-8 py-3 mb-7 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:scale-105">
+                    <button
+                        onClick={() => window.location.href = 'contact'}
+
+                        className="bg-white text-orange-500 px-8 py-3 mb-7 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:scale-105">
                         Lets do it
                     </button>
                 </div>
