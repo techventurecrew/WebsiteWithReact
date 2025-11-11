@@ -19,7 +19,7 @@ const FooterSection = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-indigo-950 via-blue-930 to-indigo-950 text-white relative overflow-hidden">    
+    <footer className=" bg-gradient-to-r from-[#000000] via-[#000080] to-[#000] text-white relative overflow-hidden">    
     
 
       <div className="relative z-10 max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex flex-col items-start">
@@ -34,7 +34,7 @@ const FooterSection = () => {
           <img
             src="/Images/Group19.png"
             alt="Footer Logo"
-            className="h-full object-contain opacity-1"
+            className="h-full object-contain opacity-0"
           />
         </div>
 
@@ -48,7 +48,7 @@ const FooterSection = () => {
           {/* <h2 className="text-3xl font-bold text-orange-500">
               CREWTECHVENTURE
             </h2> */}
-            <p className="text-gray-300 text-2xl">
+            <p className="text-white text-2xl">
               Building scalable, secure, and innovative software solutions that drive digital transformation.
             </p>
           </div>
@@ -62,7 +62,7 @@ const FooterSection = () => {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-orange-500 transition-colors duration-300 text-lg block"
+                    className="text-white hover:text-orange-500 transition-colors duration-300 text-lg block"
                   >
                     {link.name}
                   </a>
@@ -76,17 +76,17 @@ const FooterSection = () => {
             <div className="space-y-4">
               <a
                 href="tel:+918273943836"
-                className="text-gray-300 hover:text-orange-500 transition-colors duration-300 text-lg block"
+                className="text-white hover:text-orange-500 transition-colors duration-300 text-lg block"
               >
                 +91-8273943836
               </a>
               <a
                 href="mailto:crewtechventure@gmail.com"
-                className="text-gray-300 hover:text-orange-500 transition-colors duration-300 text-lg block break-all"
+                className="text-white hover:text-orange-500 transition-colors duration-300 text-lg block break-all"
               >
                 crewtechventure@gmail.com
               </a>
-              <p className="text-gray-300 text-lg">
+              <p className="text-white text-lg">
                 Noida, Uttar Pradesh, India
               </p>
             </div>
@@ -99,7 +99,7 @@ const FooterSection = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Social Links */}
           <div className="flex items-center gap-4">
-            <span className="text-gray-300 text-lg">Follow us on</span>
+            <span className="text-white text-lg">Follow us on</span>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <a
@@ -115,7 +115,7 @@ const FooterSection = () => {
           </div>
 
           {/* Copyright */}
-          <p className="text-gray-300 text-sm md:text-base text-center md:text-right">
+          <p className="text-white text-sm md:text-base text-center md:text-right">
             Crewtechventure © Copyright 2024-2025. All Rights Reserved
           </p>
         </div>

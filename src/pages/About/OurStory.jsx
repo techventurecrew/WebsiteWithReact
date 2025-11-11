@@ -97,7 +97,10 @@ const OurStoryTeamSection = () => {
 
                     {/* CTA Button */}
                     <div className="flex justify-center">
-                        <button className="bg-orange-500 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-colors shadow-lg">
+                        <button
+                            onClick={() => window.location.href = 'hiring'}
+
+                            className="bg-orange-500 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-colors shadow-lg">
                             Take a look at our open positions
                         </button>
                     </div>

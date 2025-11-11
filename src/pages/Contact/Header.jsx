@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () => {
     return (
         <div>
-            <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+            <section className="bg-white py-16 mt-4 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto text-center">
                     {/* Heading */}
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">

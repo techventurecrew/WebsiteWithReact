@@ -20,7 +20,9 @@ const WorkWithUsBanner = () => {
                 </p>
 
                 {/* Call to Action Button */}
-                <button className="bg-white text-orange-500 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+                <button
+                    onClick={() => window.location.href = 'hiring'}
+                    className="bg-white text-orange-500 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
                     Take a look at our open positions
                 </button>
             </div>
