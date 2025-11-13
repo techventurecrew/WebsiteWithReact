@@ -117,21 +117,19 @@ const ServicesCardsGrid = () => {
                         return (
                             <div
                                 key={service.id}
-                                className="card-angled group relative bg-gray-200 h-96 sm:h-[450px] w-full sm:w-[350px] rounded-t-3xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                                style={{
-                                    clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)',
-                                }}
+                                className=" group relative bg-gray-200 h-96 sm:h-[400px] w-full sm:w-[350px]  shadow-2xl rounded-3xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+
                             >
                                 {/* Card Content */}
                                 <div className="relative z-10">
                                     {/* Icon Section with Gradient */}
                                     <div className={`bg-gradient-to-br ${service.gradient} p-12 flex items-center justify-center shadow-xl`}>
-                                        <IconComponent className="w-16 h-16 sm:w-24 sm:h-24 text-white" strokeWidth={1.5} />
+                                        <IconComponent className="w-16 h-12 sm:w-24 sm:h-18 text-white" strokeWidth={1.5} />
                                     </div>
 
                                     {/* Text Content */}
-                                    <div className="p-6 pb-10">
-                                        <h3 className="text-lg sm:text-xl font-bold mb-3 text-gray-900">
+                                    <div className="p-6 pb-10 flex flex-col items-center">
+                                        <h3 className="text-lg sm:text-xl text-center font-bold mb-3 text-gray-900">
                                             {service.title}
                                         </h3>
                                         <p className="text-black text-sm leading-relaxed mb-4">
@@ -139,7 +137,7 @@ const ServicesCardsGrid = () => {
                                         </p>
                                         <button
                                             onClick={() => setSelectedService(service)}
-                                            className="text-orange-500 font-semibold text-sm border-2 border-orange-500 px-6 py-2 rounded-xl hover:bg-orange-500 hover:text-white transition-all duration-300"
+                                            className=" text-orange-500 font-semibold text-sm border-2 border-orange-500 px-6 py-2 rounded-xl hover:bg-orange-500 hover:text-white transition-all duration-300"
                                         >
                                             Learn More
                                         </button>
@@ -147,12 +145,12 @@ const ServicesCardsGrid = () => {
                                 </div>
 
                                 {/* Diagonal Shadow Effect */}
-                                <div
+                                {/* <div
                                     className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-300 to-transparent opacity-50"
                                     style={{
                                         clipPath: 'polygon(0 100%, 100% 90%, 100% 100%)'
                                     }}
-                                ></div>
+                                ></div> */}
                             </div>
                         );
                     })}

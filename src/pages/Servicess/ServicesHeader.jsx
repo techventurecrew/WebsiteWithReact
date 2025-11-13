@@ -2,7 +2,7 @@ import React from 'react';
 
 const ServicesHeaderSection = () => {
     return (
-        <section className="bg-white py-18 px-2 sm:px-6 lg:px-8">
+        <section className="bg-white mt-24 py-18 px-2 sm:px-6 lg:px-8">
             <div className="max-w-8xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-4 items-center">
                     {/* Left Side - Content */}

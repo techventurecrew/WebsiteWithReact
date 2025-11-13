@@ -18,16 +18,16 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
+        <nav className="bg-orange-600 shadow-sm fixed top-0 left-0 w-full z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
                     <div className="flex items-center space-x-3">
                         <div className="relative w-12 h-12">
                             <img
-                                src="/Images/logo.png"
+                                src="/Images/crew.png"
                                 alt="Logo"
-                                className="w-full h-full object-contain"
+                                className="w-full h-full rounded-full object-contain"
                             />
                         </div>
                         <div className="flex flex-col leading-tight">
@@ -47,8 +47,8 @@ const Navbar = () => {
                                 href={link.href}
                                 onClick={() => handleLinkClick(link.name)}
                                 className={`text-base font-medium transition-colors duration-200 ${activeLink === link.name
-                                    ? 'text-orange-500'
-                                    : 'text-gray-700 hover:text-orange-500'
+                                    ? 'text-orange-800'
+                                    : 'text-white hover:text-orange-500'
                                     }`}
                             >
                                 {link.name}

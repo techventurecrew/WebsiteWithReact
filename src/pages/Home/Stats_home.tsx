@@ -77,7 +77,7 @@ const StatsSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative bg-gradient-to-br from-orange-500 to-orange-600 py-20 overflow-hidden"
+      className="relative bg-gradient-to-br from-orange-500 to-orange-600 py-12 overflow-hidden"
     >
       {/* Decorative Geometric Shape */}
       <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-20">
@@ -98,7 +98,7 @@ const StatsSection = () => {
               }}
             >
               {/* Number */}
-              <div className="text-6xl sm:text-7xl md:text-8xl font-bold">
+              <div className="text-6xl sm:text-7xl md:text-5xl font-bold">
                 {counts[index]}{stat.suffix}
               </div>
               

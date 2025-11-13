@@ -24,13 +24,13 @@ const HeroSection = () => {
                         <div className="flex flex-wrap gap-4 pt-4">
                             <button
                                 className="px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold text-lg shadow-lg hover:bg-orange-600 transform hover:scale-105 transition-all duration-300"
-                                onClick={() => console.log('Book Call button clicked')}
+                                onClick={() => window.open('https://wa.me/8273943836', '_blank')}
                             >
                                 Book Call
                             </button>
                             <button
                                 className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-lg font-semibold text-lg hover:bg-orange-50 transition-all duration-300"
-                                onClick={() => window.location.href = 'Contact'}
+                                onClick={() => window.location.href = 'about'}
                             >
                                 Learn More
                             </button>

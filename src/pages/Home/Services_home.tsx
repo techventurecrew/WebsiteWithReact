@@ -85,7 +85,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="card-angled group bg-gray-200 transition-all duration-300 overflow-hidden rounded-t-3xl transform hover:-translate-y-2 relative h-[450px] w-[350px]"
+              className=" group bg-gray-200 shadow-2xl transition-all duration-300 overflow-hidden rounded-3xl transform hover:-translate-y-2 relative h-[400px] w-[350px]"
             >
               {/* Icon Header with Gradient */}
               <div className={`bg-gradient-to-br ${service.gradient} p-8 flex items-center justify-center rounded-t-3xl shadow-xl`}>
@@ -104,7 +104,7 @@ const ServicesSection = () => {
                 </p>
                 <button
                   onClick={() => setSelectedService(service)}
-                  className="inline-flex items-center px-6 py-2 border-2 border-orange-500 text-orange-500 rounded-xl font-medium hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className=" px-6 py-2 border-2 border-orange-500 text-orange-500 rounded-xl font-medium hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Learn More
                 </button>
