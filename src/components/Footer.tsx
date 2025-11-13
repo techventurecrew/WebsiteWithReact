@@ -19,7 +19,7 @@ const FooterSection = () => {
   ];
 
   return (
-    <footer className=" bg-gradient-to-r from-[#000000] via-[#000080] to-[#000] text-white relative overflow-hidden">    
+    <footer className=" bg-[#02022b] text-white relative overflow-hidden">    
     
 
       <div className="relative z-10 max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex flex-col items-start">

@@ -23,11 +23,11 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
                     <div className="flex items-center space-x-3">
-                        <div className="relative w-12 h-12">
+                        <div className="relative w-16 h-16">
                             <img
                                 src="/Images/crew.png"
                                 alt="Logo"
-                                className="w-full h-full rounded-full object-contain"
+                                className="w-full h-full rounded-full object-contain bg-white"
                             />
                         </div>
                         <div className="flex flex-col leading-tight">
@@ -59,7 +59,7 @@ const Navbar = () => {
                     {/* Get Started Button */}
                     <div className="hidden md:block">
                         <button
-                            className="px-8 py-3 border-2 border-orange-500 text-orange-500 rounded-full font-medium hover:bg-orange-500 hover:text-white transition-all duration-300"
+                            className="px-8 py-3 border-2 border-white text-white  rounded-full  font-medium hover:bg-orange-500 hover:text-white transition-all duration-300"
                             onClick={() => console.log('Get Started button clicked')}
                         >
                             Get Started
@@ -95,7 +95,7 @@ const Navbar = () => {
                                 {link.name}
                             </a>
                         ))}
-                        <button className="w-full mt-4 px-8 py-3 border-2 border-orange-500 text-orange-500 rounded-xl font-medium hover:bg-orange-500 hover:text-white transition-all duration-300">
+                        <button className="w-full mt-4 px-8 py-3 border-2 border-white text-white rounded-xl font-medium hover:bg-orange-500 hover:text-white transition-all duration-300">
                             Get Started
                         </button>
                     </div>

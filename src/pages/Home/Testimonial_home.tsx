@@ -9,19 +9,19 @@ const TestimonialsSection = () => {
       quote: "They're professional, trustworthy, and creative. With their help, our digital presence has grown stronger, and we've built better connections with our customers.",
       author: "Sachin Goel",
       position: "CEO of Oneness",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sachin"
+      image: "/Images/male-profile.jpg", // Image from public folder
     },
     {
       quote: "Working with Crew Tech Venture transformed our business. Their innovative approach and dedication to excellence exceeded all our expectations.",
       author: "Priya Sharma",
       position: "Founder of TechStart",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya"
+      image: "/Images/female-profile.jpg", // Image from public folder
     },
     {
       quote: "The team delivered exceptional results on time and within budget. Their expertise in modern web development is truly impressive.",
       author: "Rahul Mehta",
       position: "Director of Digital Solutions",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul"
+      image: "/Images/male-profile.jpg", // Image from public folder
     },
   ];
 
