@@ -151,7 +151,7 @@ const ProjectsSection = () => {
     };
 
     return (
-        <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
@@ -175,8 +175,8 @@ const ProjectsSection = () => {
                                 setCurrentSlide(0);
                             }}
                             className={`w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 ${activeCategory === category
-                                    ? 'bg-orange-500 text-white shadow-lg'
-                                    : 'bg-white text-orange-500 border-2 border-orange-500 hover:bg-orange-50'
+                                ? 'bg-orange-500 text-white shadow-lg'
+                                : 'bg-white text-orange-500 border-2 border-orange-500 hover:bg-orange-50'
                                 }`}
                         >
                             {category}

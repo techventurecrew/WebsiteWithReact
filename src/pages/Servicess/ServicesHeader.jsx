@@ -1,10 +1,12 @@
 import React from 'react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const ServicesHeaderSection = () => {
     return (
         <section className="bg-white mt-24 py-18 px-2 sm:px-6 lg:px-8">
             <div className="max-w-8xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-4 items-center">
+
                     {/* Left Side - Content */}
                     <div className="space-y-6 mx-10">
                         {/* Heading */}
@@ -13,28 +15,25 @@ const ServicesHeaderSection = () => {
                         </h1>
 
                         {/* Description */}
-                        <p className=" sm:text-xl md:text-2xl font-semibold text-gray-800 leading-relaxed">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit
-                            Ut et massa mi. , mattis ligula consectetur, ultrices
-                            mauris. Maecenas vitae mattis tellus..
+                        <p className="sm:text-xl md:text-2xl font-semibold text-gray-800 leading-relaxed">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi,
+                            mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.
                         </p>
                     </div>
 
-                    {/* Right Side - Animated Video */}
-                    <div className="flex justify-center items-center">
-                        <div className="w-full max-w-lg">
-                            <video
-                                autoPlay
+                    {/* Right Side - Lottie Animation */}
+                    <div className="flex justify-center lg:justify-end">
+                        <div className="w-[400px] h-[400px] sm:w-[500px] sm:h-[500px]">
+                            <DotLottieReact
+                                src="https://lottie.host/2a738bfb-b4ca-40b8-aa82-c24ff5ad8ea3/nzfooyJKLz.lottie"
                                 loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-contain"
-                            >
-                                <source src="/Images/Services-Header-Video.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+                                autoplay
+                                className="bg-orange-600"
+
+                            />
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
