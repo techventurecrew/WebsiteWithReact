@@ -28,7 +28,7 @@ const ServicesHeaderSection = () => {
                                 src="https://lottie.host/2a738bfb-b4ca-40b8-aa82-c24ff5ad8ea3/nzfooyJKLz.lottie"
                                 loop
                                 autoplay
-                                className="bg-orange-600 h-[400px]"
+                                className=" h-[400px]"
 
                             />
                         </div>

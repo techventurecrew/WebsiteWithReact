@@ -81,7 +81,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Desktop View */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
+        <div className="hidden md:flex md:flex-cols-2 items-center justify-center lg:grid-cols-3 gap-8 mb-6">
           {services.map((service, index) => (
             <div
               key={index}
