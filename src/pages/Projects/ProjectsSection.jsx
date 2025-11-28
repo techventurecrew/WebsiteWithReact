@@ -159,9 +159,7 @@ const ProjectsSection = () => {
                         Our <span className="text-orange-500">Projects</span>
                     </h2>
                     <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit
-                        urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris.
-                        Maecenas vitae mattis tellus..
+                        At Crew Techventure, every project is designed to help businesses move confidently into the digital world by combining clean design, robust technology, and a deep understanding of local markets. From modern websites and scalable software to impactful graphics and data-driven dashboards, each solution is crafted to boost visibility, improve customer experience, and support long-term growth
                     </p>
                 </div>
 

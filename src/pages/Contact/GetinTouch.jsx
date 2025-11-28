@@ -33,8 +33,7 @@ const GetInTouchSection = () => {
                                 Get in <span className="text-orange-500">Touch</span>
                             </h2>
                             <p className="text-lg text-gray-700 leading-relaxed">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna..
-                            </p>
+                                Reach out for new projects, redesigns, long-term maintenance, or collaborations—every engagement begins with understanding your goals and challenges. <br /> Crew Techventure supports clients across India with flexible, remote-friendly project execution.                            </p>
                         </div>
 
                         {/* Contact Details */}
@@ -46,7 +45,7 @@ const GetInTouchSection = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-2xl font-bold mb-1">Address</h3>
-                                    <p className="text-lg text-gray-700">Noida, Uttar Pradesh, India</p>
+                                    <p className="text-lg text-gray-700">Meerut, Uttar Pradesh, India</p>
                                 </div>
                             </div>
 

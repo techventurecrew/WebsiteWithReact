@@ -60,8 +60,11 @@ const WhyChooseUsSection = () => {
                         Wanna work with us?..
                     </h2>
                     <p className="text-base sm:text-lg text-white mb-8 opacity-90">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi., mattis
-                        ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus..
+                        Whether you’re a local business, startup, or growing enterprise — we’re here to turn your ideas into powerful digital realities.
+                        Our team focuses on quality, communication, and timely delivery to ensure a smooth and transparent work experience.
+
+                        Ready to take your business online?
+
                     </p>
                     <button
                         onClick={() => window.location.href = 'contact'}

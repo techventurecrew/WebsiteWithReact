@@ -1,4 +1,6 @@
+
 import React from 'react';
+
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
@@ -12,6 +14,7 @@ import ContactSection from './pages/Contact/Contact';
 import Projects from './pages/Projects/Projects';
 import About from './pages/About/About';
 import Hiring from './pages/Hiring/Hiring';
+import './styles/animations.css'; // Add this at the top
 const App = () => {
   return (
     <Router>

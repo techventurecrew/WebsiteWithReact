@@ -12,9 +12,7 @@ const Header = () => {
 
                     {/* Description */}
                     <p className="text-base sm:text-lg text-black font-semibold lg:text-2xl leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in
-                        hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur,
-                        ultrices mauris. Maecenas vitae mattis tellus..
+                        Crew Techventure partners with local businesses, startups, and growing enterprises to turn ideas into powerful digital solutions. Share your requirements, and the team will help you choose the right mix of websites, apps, branding, and analytics to strengthen your online presence.
                     </p>
                 </div>
             </section>

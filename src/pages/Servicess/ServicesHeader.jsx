@@ -16,8 +16,10 @@ const ServicesHeaderSection = () => {
 
                         {/* Description */}
                         <p className="sm:text-xl md:text-2xl font-semibold text-gray-800 leading-relaxed">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi,
-                            mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.
+                            At Crew Techventure, we provide modern, reliable, and scalable digital solutions designed to help businesses grow online.
+                            From websites to custom software, graphics, branding, and data analytics — we build everything with precision, creativity, and purpose.
+
+                            Our goal is simple: to help your business stand out, attract customers, and operate smarter in today’s digital world.
                         </p>
                     </div>
 

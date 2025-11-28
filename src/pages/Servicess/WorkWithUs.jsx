@@ -15,8 +15,11 @@ const WorkWithUsBanner = () => {
 
                 {/* Description */}
                 <p className="text-base sm:text-lg text-white mb-8 opacity-95 leading-relaxed">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi., mattis
-                    ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus..
+                    We partner with businesses that want to grow, innovate, and make an impact.
+                    Whether you need a stunning website, a powerful software solution, or a complete digital setup — our team is ready to turn your ideas into reality.
+
+                    We believe in quality work, smooth communication, and delivering results that make a real difference.
+                    If you're looking for a reliable digital partner, you’re in the right place.
                 </p>
 
                 {/* Call to Action Button */}
