@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion'; // Added AnimatePresence
 import { ArrowRight, Monitor, Rocket, Palette, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const ServicesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedService, setSelectedService] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const services = [
     {
@@ -14,278 +14,219 @@ const ServicesSection = () => {
       title: "Web Development",
       description: "We build professional, high-performance websites to grow your business online.",
       gradient: 'from-orange-500 to-red-500',
-      detailedDescription: 'Our web development services encompass creating modern, responsive, and scalable websites tailored to your business needs. We use cutting-edge technologies and best practices to ensure your online presence stands out and delivers exceptional user experiences.',
+      detailedDescription: 'Our web development services encompass creating modern, responsive, and scalable websites tailored to your business needs.',
       steps: [
-        'Discovery & Planning: Understanding your requirements, goals, and target audience',
-        'Design & Prototyping: Creating wireframes and visual designs that align with your brand',
-        'Development: Building the website with clean, maintainable code using modern frameworks',
-        'Testing & QA: Ensuring everything works flawlessly across all devices and browsers',
-        'Launch & Deployment: Making your site live with proper hosting and domain setup',
-        'Maintenance & Support: Ongoing updates, security patches, and improvements'
+        'Discovery & Planning: Understanding your requirements',
+        'Design & Prototyping: Creating wireframes',
+        'Development: Building with clean code',
+        'Testing & QA: Ensuring flawless performance',
+        'Launch & Deployment: Making your site live',
+        'Maintenance: Ongoing updates'
       ]
     },
+    // ... rest of your digital marketing and graphic design objects
     {
-      icon: <Rocket className="w-16 h-16" />,
-      title: "Digital Marketing",
-      description: 'Reach your target audience with strategic digital marketing campaigns.',
-      gradient: 'from-orange-500 to-red-500',
-      detailedDescription: 'Amplify your brand reach with data-driven digital marketing strategies. From social media to email campaigns, we create integrated marketing solutions that drive engagement, build brand awareness, and maximize conversions.',
-            steps: [
-                'Market Research: Understanding your audience, competitors, and opportunities',
-                'Strategy Development: Creating a comprehensive multi-channel marketing plan',
-                'Campaign Creation: Designing engaging ad content and compelling copy',
-                'Multi-Channel Execution: Running campaigns across social, email, and paid ads',
-                'A/B Testing: Optimizing campaigns for better performance and ROI',
-                'Analytics & Tracking: Measuring engagement, conversions, and revenue',
-                'Continuous Optimization: Refining strategies based on data and insights'
-            ]
+        icon: <Rocket className="w-16 h-16" />,
+        title: "Digital Marketing",
+        description: 'Reach your target audience with strategic digital marketing campaigns.',
+        gradient: 'from-orange-500 to-red-500',
+        detailedDescription: 'Amplify your brand reach with data-driven digital marketing strategies.',
+        steps: ['Market Research', 'Strategy Development', 'Campaign Creation', 'Execution', 'A/B Testing', 'Analytics', 'Optimization']
     },
     {
-      icon: <Palette className="w-16 h-16" />,
-      title: "Graphic Designing",
-      description: "We provide professional graphic design services to bring your brand's visual identity to life.",
-      gradient: 'from-orange-500 to-red-500',
-      detailedDescription: 'Create a lasting impression with stunning visual designs. From logos to marketing materials, we craft compelling graphics that communicate your brand message effectively and beautifully across all mediums.',
-      steps: [
-        'Brand Discovery: Understanding your vision, values, and target market',
-        'Research & Inspiration: Analyzing industry trends and competitor designs',
-        'Concept Development: Creating multiple initial design concepts for review',
-        'Design Iteration: Refining designs based on your feedback and preferences',
-        'Final Artwork: Delivering polished, print-ready, and web-optimized files',
-        'Brand Guidelines: Providing comprehensive usage standards and documentation'
-      ]
-    },
+        icon: <Palette className="w-16 h-16" />,
+        title: "Graphic Designing",
+        description: "We provide professional graphic design services to bring your brand's visual identity to life.",
+        gradient: 'from-orange-500 to-red-500',
+        detailedDescription: 'Create a lasting impression with stunning visual designs.',
+        steps: ['Brand Discovery', 'Research', 'Concept Development', 'Iteration', 'Final Artwork', 'Brand Guidelines']
+    }
   ];
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + services.length) % services.length);
+  const cardVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    }
   };
 
-  const handleMoreServices = () => {
-    // In your actual code, use: navigate('/services')
-    navigate('/services'); // Redirect to the services page
-  };
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % services.length);
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
 
   return (
-    <section className="bg-gray-50 ">
-      <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-6">
-          <h2 className="text-6xl sm:text-5xl font-bold mb-2">
+    <section className="bg-gray-50 py-20 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header - Animated */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold mb-4">
             Our <span className="text-orange-500">Services</span>
           </h2>
-          <h3 className="text-3xl sm:text-2xl font-bold mb-2">
-          Everything You Need to Succeed Online
+          <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-800">
+            Everything You Need to Succeed Online
           </h3>
-          <p className="text-lg font-bold text-gray-700 max-w-5xl mx-auto">
-          We're more than just a service provider—we're your growth partner. As a leading web development
-company in India and app development company in India, we offer comprehensive IT solutions tailored
-to your business needs.          </p>
-        </div>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-medium">
+            We're more than just a service provider—we're your growth partner.
+          </p>
+        </motion.div>
 
-        {/* Desktop View */}
-        <div className="hidden md:flex md:flex-cols-2 items-center justify-center lg:grid-cols-3 gap-8 mb-6">
+        {/* Desktop View - Staggered Cards */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="hidden md:flex flex-wrap justify-center gap-8 mb-12"
+        >
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className=" group bg-gray-200 shadow-2xl transition-all duration-300 overflow-hidden rounded-3xl transform hover:-translate-y-2 relative h-[400px] w-[350px]"
+              variants={cardVariants}
+              whileHover={{ y: -10 }}
+              className="group bg-white shadow-xl rounded-3xl overflow-hidden w-[350px] relative border border-gray-100"
             >
-              {/* Icon Header with Gradient */}
-              <div className={`bg-gradient-to-br ${service.gradient} p-8 flex items-center justify-center rounded-t-3xl shadow-xl`}>
-                <div className="text-white">
+              <div className={`bg-gradient-to-br ${service.gradient} p-10 flex items-center justify-center`}>
+                <motion.div 
+                   whileHover={{ scale: 1.2, rotate: 5 }}
+                   className="text-white"
+                >
                   {service.icon}
-                </div>
+                </motion.div>
               </div>
 
-              {/* Card Content */}
-              <div className="p-6 space-y-4 flex flex-col items-center">
-                <h3 className="text-2xl font-bold text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="text-black leading-relaxed text-center">
-                  {service.description}
-                </p>
+              <div className="p-8 text-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <p className="text-gray-600 mb-6 min-h-[60px]">{service.description}</p>
                 <button
                   onClick={() => setSelectedService(service)}
-                  className=" px-6 py-2 border-2 border-orange-500 text-orange-500 rounded-xl font-medium hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="px-8 py-2 border-2 border-orange-500 text-orange-500 rounded-xl font-bold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Learn More
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Mobile View */}
-        <div className="md:hidden relative">
-          <div className="flex items-center justify-center">
-            <div className="w-full max-w-sm">
-              <div
-                className="group bg-gray-200 transition-all duration-300 overflow-hidden rounded-t-3xl relative h-[450px] w-full"
-              >
-                {/* Icon Header with Gradient */}
-                <div className={`bg-gradient-to-br ${services[currentIndex].gradient} p-8 flex items-center justify-center rounded-t-3xl shadow-xl`}>
-                  <div className="text-white">
-                    {services[currentIndex].icon}
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-6 space-y-4 flex flex-col items-center">
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    {services[currentIndex].title}
-                  </h3>
-                  <p className="text-black leading-relaxed text-center">
-                    {services[currentIndex].description}
-                  </p>
-                  <button
-                    onClick={() => setSelectedService(services[currentIndex])}
-                    className="inline-flex items-center px-6 py-2 border-2 border-orange-500 text-orange-500 rounded-xl font-medium hover:bg-orange-500 hover:text-white transition-all duration-300"
-                  >
-                    Learn More
-                  </button>
-                </div>
-
-                {/* Navigation Buttons */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4">
-                  <button
-                    onClick={prevSlide}
-                    className="bg-orange-500 text-white p-2 rounded-full shadow-lg hover:bg-orange-600 transition-all"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <button
-                    onClick={nextSlide}
-                    className="bg-orange-500 text-white p-2 rounded-full shadow-lg hover:bg-orange-600 transition-all"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </button>
-                </div>
+        {/* Mobile View - Slide Animation */}
+        <div className="md:hidden relative px-4">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -100, opacity: 0 }}
+              className="bg-white rounded-3xl shadow-2xl overflow-hidden"
+            >
+              <div className={`bg-gradient-to-br ${services[currentIndex].gradient} p-8 flex items-center justify-center`}>
+                <div className="text-white">{services[currentIndex].icon}</div>
               </div>
-            </div>
+              <div className="p-8 text-center pb-20">
+                <h3 className="text-2xl font-bold mb-4">{services[currentIndex].title}</h3>
+                <p className="text-gray-600 mb-6">{services[currentIndex].description}</p>
+                <button
+                  onClick={() => setSelectedService(services[currentIndex])}
+                  className="px-8 py-2 border-2 border-orange-500 text-orange-500 rounded-xl font-bold"
+                >
+                  Learn More
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+          
+          {/* Mobile Nav */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-6">
+            <button onClick={prevSlide} className="bg-orange-500 text-white p-3 rounded-full shadow-lg"><ChevronLeft /></button>
+            <button onClick={nextSlide} className="bg-orange-500 text-white p-3 rounded-full shadow-lg"><ChevronRight /></button>
           </div>
         </div>
 
-        {/* More Services Button */}
-        <div className="text-center mt-6">
+        {/* Footer Button */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-center mt-12"
+        >
           <button
-            onClick={handleMoreServices}
-            className="inline-flex items-center gap-2 px-8 py-2 border-2 border-orange-500 text-orange-500 rounded-xl font-semibold text-lg hover:bg-orange-500 hover:text-white transition-all duration-300 group"
+            onClick={() => navigate('/services')}
+            className="group inline-flex items-center gap-3 px-10 py-3 border-2 border-orange-500 text-orange-500 rounded-full font-bold text-lg hover:bg-orange-500 hover:text-white transition-all"
           >
-            More services
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            More services <ArrowRight className="group-hover:translate-x-2 transition-transform" />
           </button>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Modal Popup */}
-      {selectedService && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedService(null)}
-          style={{ animation: 'fadeIn 0.3s ease-out' }}
-        >
-          <div 
-            className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-            style={{ animation: 'slideUp 0.3s ease-out' }}
+      {/* Modal Popup - Animated with AnimatePresence */}
+      <AnimatePresence>
+        {selectedService && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/70 z-[1000] flex items-center justify-center p-4 backdrop-blur-sm"
+            onClick={() => setSelectedService(null)}
           >
-            {/* Modal Header */}
-            <div className={`bg-gradient-to-br ${selectedService.gradient} p-8 relative rounded-t-2xl`}>
-              <button
-                onClick={() => setSelectedService(null)}
-                className="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-2 transition-all duration-300"
-                aria-label="Close modal"
-              >
-                <X className="w-6 h-6 text-white" />
-              </button>
-              <div className="flex items-center gap-4">
-                <div className="text-white">
+            <motion.div 
+              initial={{ scale: 0.9, y: 20, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 20, opacity: 0 }}
+              className="bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal UI same as your original, but now wrapped in motion */}
+              <div className={`bg-gradient-to-br ${selectedService.gradient} p-8 relative`}>
+                <button onClick={() => setSelectedService(null)} className="absolute top-4 right-4 text-white hover:rotate-90 transition-transform"><X size={32}/></button>
+                <div className="flex items-center gap-5 text-white">
                   {selectedService.icon}
+                  <h2 className="text-3xl font-bold">{selectedService.title}</h2>
                 </div>
-                <h2 className="text-3xl font-bold text-white">
-                  {selectedService.title}
-                </h2>
               </div>
-            </div>
-
-            {/* Modal Content */}
-            <div className="p-8">
-              {/* Detailed Description */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  About This Service
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  {selectedService.detailedDescription}
-                </p>
-              </div>
-
-              {/* Steps */}
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Our Process
-                </h3>
-                <div className="space-y-4">
-                  {selectedService.steps.map((step, index) => (
-                    <div 
-                      key={index}
-                      className="flex gap-4 items-start group"
+              <div className="p-8 overflow-y-auto max-h-[60vh]">
+                <h3 className="text-xl font-bold mb-3">About This Service</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed">{selectedService.detailedDescription}</p>
+                <h3 className="text-xl font-bold mb-4">Our Process</h3>
+                <div className="grid gap-4">
+                  {selectedService.steps.map((step, i) => (
+                    <motion.div 
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: i * 0.1 }}
+                      key={i} 
+                      className="flex gap-4 items-center group"
                     >
-                      <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br ${selectedService.gradient} flex items-center justify-center text-white font-bold text-sm`}>
-                        {index + 1}
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-gray-800 leading-relaxed group-hover:text-orange-600 transition-colors duration-300">
-                          {step}
-                        </p>
-                      </div>
-                    </div>
+                      <span className={`w-8 h-8 rounded-full bg-gradient-to-br ${selectedService.gradient} flex items-center justify-center text-white text-sm font-bold flex-shrink-0`}>{i+1}</span>
+                      <p className="text-gray-700 group-hover:text-orange-500 transition-colors">{step}</p>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
-
-              {/* CTA Button */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
                 <button 
-                                                    onClick={() => navigate('/contact')} // Navigate to contact form
-
-                  className={`w-full bg-gradient-to-br ${selectedService.gradient} text-white font-semibold py-4 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
+                  onClick={() => navigate('/contact')}
+                  className={`w-full mt-8 bg-gradient-to-br ${selectedService.gradient} text-white font-bold py-4 rounded-2xl hover:scale-[1.02] transition-transform`}
                 >
                   Get Started with {selectedService.title}
                 </button>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Animation Styles */}
-      <style>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes slideUp {
-          from {
-            transform: translateY(50px);
-            opacity: 0;
-          }
-          to {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-      `}</style>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

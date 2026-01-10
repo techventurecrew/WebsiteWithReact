@@ -38,3 +38,30 @@ body {
 .card-angled {
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
 }
+
+/* index.css */
+
+@keyframes grid-slide {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 50px 50px;
+    }
+}
+
+.bg-tech-grid {
+    /* This creates a 50x50px grid with very faint orange lines */
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(to right, rgba(249, 115, 22, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(249, 115, 22, 0.05) 1px, transparent 1px);
+
+    /* This creates a "vignette" effect so the grid fades out at the edges */
+    mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+
+    /* Apply the infinite sliding animation */
+    animation: grid-slide 15s linear infinite;
+}

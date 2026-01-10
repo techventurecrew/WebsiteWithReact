@@ -1,54 +1,20 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ProjectsSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const projects = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-      tags: ['Web Application', 'UI/UX'],
-    },
-    {
-      id: 2,
-      title: 'Corporate Website',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.',
-      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop',
-      tags: ['Web Application', 'UI/UX'],
-    },
-    {
-      id: 3,
-      title: 'Portfolio Site',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
-      tags: ['Web Application', 'UI/UX'],
-    },
-    {
-      id: 4,
-      title: 'Fitness Tracking App',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.',
-      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop',
-      tags: ['Mobile App', 'UI/UX'],
-    },
-    {
-      id: 5,
-      title: 'Food Delivery App',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.',
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop',
-      tags: ['Mobile App', 'UI/UX'],
-    },
+    { id: 1, title: 'E-Commerce Platform', description: 'Innovative shopping experience with seamless payments.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop', tags: ['Web Application', 'UI/UX'] },
+    { id: 2, title: 'Corporate Website', description: 'Professional digital presence for global enterprises.', image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop', tags: ['Web Application', 'UI/UX'] },
+    { id: 3, title: 'Portfolio Site', description: 'Creative showcase for artists and developers.', image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop', tags: ['Web Application', 'UI/UX'] },
+    { id: 4, title: 'Fitness Tracking App', description: 'Real-time health monitoring and workout plans.', image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop', tags: ['Mobile App', 'UI/UX'] },
+    { id: 5, title: 'Food Delivery App', description: 'Fast and reliable local food delivery solution.', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop', tags: ['Mobile App', 'UI/UX'] },
   ];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
-  };
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % projects.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
 
   const getVisibleProjects = () => {
     const visible = [];
@@ -60,144 +26,101 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className="bg-white py-10 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-6">
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6">
+        
+        {/* Header - Animated Entrance */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-5xl md:text-7xl font-bold mb-4">
             Our <span className="text-orange-500">Projects</span>
           </h2>
-          <p className="text-base font-bold sm:text-3xl mb-3 text-gray-700 leading-relaxed max-w-4xl mx-auto">
-          Our Work Speaks for Itself
+          <p className="text-2xl font-semibold text-gray-800 mb-4">Our Work Speaks for Itself</p>
+          <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+            From innovative web platforms to results-driven marketing campaigns, 
+            we turn your vision into digital reality.
           </p>
-          <p className="text-lg font-bold text-gray-700 max-w-5xl mx-auto">From innovative web platforms to eye-catching designs and results-driven marketing campaigns, we've
-helped businesses across industries achieve their digital goals. Take a look at some of our recent projects
-and see what we can do for you.</p>
-        </div>
+        </motion.div>
 
-        {/* Projects Carousel */}
-        <div className="relative">
-          {/* Desktop/Tablet View */}
-          <div className="hidden md:flex items-center justify-center min-h-[500px] perspective-1000">
-            {getVisibleProjects().map((project) => {
-              const position = project.position;
-              const isCenter = position === 0;
-              const isLeft = position === -1;
-              const isRight = position === 1;
-
-              return (
-                <div
-                  key={project.id}
-                  className={`absolute transition-all ease-in-out ${
-                    isCenter
-                      ? 'z-30 scale-100 opacity-100'
-                      : isLeft
-                      ? 'z-10 scale-75 opacity-60 -translate-x-[400px] -rotate-6'
-                      : 'z-10 scale-75 opacity-60 translate-x-[400px] rotate-6'
-                  }`}
-                  style={{ 
-                    transitionDuration: '1500ms', // Explicitly setting a slow 1.5s transition
-                    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' // Smoother acceleration/deceleration
-                  }}
-                >
-                  <div className="bg-gray-100 rounded-3xl border-4 border-orange-500 overflow-hidden shadow-2xl w-[400px] lg:w-[500px]">
-                    <div className="h-64 bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="p-6 lg:p-8">
-                      <h3 className="text-2xl lg:text-3xl font-bold mb-3">{project.title}</h3>
-                      <p className="text-gray-600 text-base mb-4 leading-relaxed">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag, index) => (
-                          <span
-                            key={index}
-                            className={`px-4 py-2 rounded-xl text-sm font-medium ${
-                              index === 0
-                                ? 'bg-orange-100 text-orange-500'
-                                : 'bg-gray-200 text-gray-700'
-                            }`}
-                          >
-                            {tag}
-                          </span>
-                        ))}
+        {/* 3D Projects Carousel */}
+        <div className="relative h-[600px] flex items-center justify-center">
+          <div className="relative w-full max-w-[500px] h-full flex items-center justify-center [perspective:1200px]">
+            <AnimatePresence mode="popLayout">
+              {getVisibleProjects().map((project) => {
+                const isCenter = project.position === 0;
+                
+                return (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{
+                      opacity: isCenter ? 1 : 0.6,
+                      scale: isCenter ? 1 : 0.8,
+                      x: project.position * 350, // Distance from center
+                      rotateY: project.position * -25, // 3D rotation
+                      z: isCenter ? 0 : -200,
+                      zIndex: isCenter ? 30 : 10,
+                    }}
+                    exit={{ opacity: 0, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    className="absolute w-full"
+                  >
+                    <motion.div 
+                      className={`bg-gray-50 rounded-[2.5rem] border-4 ${isCenter ? 'border-orange-500 shadow-2xl shadow-orange-500/20' : 'border-gray-200'} overflow-hidden transition-colors duration-500`}
+                    >
+                      <div className="h-64 overflow-hidden relative group">
+                        <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
                       </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                      
+                      <div className="p-8">
+                        <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                        <p className="text-gray-600 mb-6 text-sm leading-relaxed">{project.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag, i) => (
+                            <span key={i} className={`px-4 py-1.5 rounded-full text-xs font-bold ${i === 0 ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-700'}`}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
 
-          {/* Mobile View */}
-          <div className="md:hidden overflow-hidden">
-            <div className="px-4">
-              <div className="bg-gray-100 rounded-3xl border-4 border-orange-500 overflow-hidden shadow-2xl">
-                <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden">
-                  <img
-                    src={projects[currentSlide]?.image}
-                    alt={projects[currentSlide]?.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3">
-                    {projects[currentSlide]?.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                    {projects[currentSlide]?.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {projects[currentSlide]?.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className={`px-3 py-1.5 rounded-xl text-xs font-medium ${
-                          index === 0
-                            ? 'bg-orange-100 text-orange-500'
-                            : 'bg-gray-200 text-gray-700'
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-orange-500 hover:text-white transition-colors z-40 border-2 border-orange-500"
-          >
-            <ChevronLeft className="w-6 h-6" />
+          {/* Nav Buttons */}
+          <button onClick={prevSlide} className="absolute left-0 md:left-10 z-50 w-14 h-14 bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white transition-all shadow-xl">
+            <ChevronLeft size={30} />
           </button>
-          <button
-            onClick={nextSlide}
-            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-orange-500 hover:text-white transition-colors z-40 border-2 border-orange-500"
-          >
-            <ChevronRight className="w-6 h-6" />
+          <button onClick={nextSlide} className="absolute right-0 md:right-10 z-50 w-14 h-14 bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white transition-all shadow-xl">
+            <ChevronRight size={30} />
           </button>
         </div>
 
-        {/* Carousel Indicators */}
-        <div className="flex justify-center gap-2 mt-8">
+        {/* Interactive Progress Bar */}
+        <div className="flex justify-center items-center gap-3 mt-4">
           {projects.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? 'w-8 bg-orange-500'
-                  : 'w-2 bg-orange-200 hover:bg-orange-300'
-              }`}
-            />
+              className="group relative h-4 flex items-center"
+            >
+              <motion.div 
+                animate={{ 
+                  width: index === currentSlide ? 40 : 12,
+                  backgroundColor: index === currentSlide ? "#f97316" : "#fed7aa"
+                }}
+                className="h-2 rounded-full transition-all duration-300"
+              />
+            </button>
           ))}
         </div>
       </div>
