@@ -2,10 +2,10 @@ import React from 'react';
 
 const CTASection = () => {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-gray-50 py-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* CTA Card */}
-        <div className="border-4 border-orange-500 rounded-3xl bg-white p-8 sm:p-12 md:p-16 lg:p-20 shadow-xl">
+        <div className="border-4 border-orange-500 rounded-3xl bg-white px-8 sm:p-12 md:p-16 lg:p-10 shadow-xl">
           <div className="text-center space-y-8">
             {/* Heading */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">

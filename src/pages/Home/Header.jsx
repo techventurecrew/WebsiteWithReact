@@ -4,23 +4,22 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 const HeroSection = () => {
     return (
         <section className="bg-gray-50 min-h-screen flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-7xl mx-auto px-4 pt-16 sm:px-6 lg:px-8">
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
 
                     {/* Left Content */}
-                    <div className="space-y-4">
-                        <h1 className="text-6xl sm:text-6xl lg:text-6xl font-semibold leading-tight">
-                            <span className="text-black">Connect. Protect.</span>
+                    <div className="space-y-3">
+                        <h1 className="text-6xl sm:text-6xl lg:text-6xl font-semibold leading-tight ">
+                            <span className="text-black">Transform Your Business with Fast,</span>
                             <br />
-                            <span className="text-black">And </span>
-                            <span className="text-orange-500">Build Everywhere.</span>
+                            {/* <span className="text-black">And </span> */}
+                            <span className="text-orange-500">Affordable IT Solutions.</span>
                         </h1>
 
                         <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl">
-                            CrewTechVenture is a premier digital transformation agency.
-                            We empower small businesses to build modern web and mobile
-                            applications, ensuring their online presence is secure, fast,
-                            and ready for growth.
+                            Your Trusted Online Partner for complete digital success. Crew Techventure is a leading IT services
+                            company in India, delivering end-to-end IT solutions that help small businesses and enterprises thrive
+                            online. From web development to digital marketing, we turn your vision into reality—quickly and costeffectively
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-4">
@@ -28,7 +27,7 @@ const HeroSection = () => {
                                 className="px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold text-lg shadow-lg hover:bg-orange-600 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
                                 onClick={() => window.open('https://wa.me/8273943836', '_blank')}
                             >
-                                <span>Book Call</span>
+                                <span>Get Started Today</span>
                                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                                     📞
                                 </span>
@@ -37,8 +36,7 @@ const HeroSection = () => {
                                 className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-lg font-semibold text-lg hover:bg-orange-50 transition-all duration-300"
                                 onClick={() => window.location.href = 'about'}
                             >
-                                Learn More
-                            </button>
+                                View Our Work                            </button>
                         </div>
                     </div>
 

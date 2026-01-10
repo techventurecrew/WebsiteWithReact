@@ -1,7 +1,8 @@
 
 import React from 'react';
 
-
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import FooterSection from './components/Footer'
@@ -15,10 +16,13 @@ import Projects from './pages/Projects/Projects';
 import About from './pages/About/About';
 import Hiring from './pages/Hiring/Hiring';
 import './styles/animations.css'; // Add this at the top
+import CustomCursor from './components/CustomCursor';
+
 const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
+        <CustomCursor />
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -32,7 +36,7 @@ const App = () => {
         </main>
         <FooterSection />
       </div>
-    </Router>
+    </Router >
   )
 }
 

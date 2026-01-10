@@ -67,9 +67,12 @@ const ProjectsSection = () => {
           <h2 className="text-5xl sm:text-6xl font-bold mb-6">
             Our <span className="text-orange-500">Projects</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-            Explore our diverse range of projects showcasing our expertise in various domains.
+          <p className="text-base font-bold sm:text-3xl mb-3 text-gray-700 leading-relaxed max-w-4xl mx-auto">
+          Our Work Speaks for Itself
           </p>
+          <p className="text-lg font-bold text-gray-700 max-w-5xl mx-auto">From innovative web platforms to eye-catching designs and results-driven marketing campaigns, we've
+helped businesses across industries achieve their digital goals. Take a look at some of our recent projects
+and see what we can do for you.</p>
         </div>
 
         {/* Projects Carousel */}

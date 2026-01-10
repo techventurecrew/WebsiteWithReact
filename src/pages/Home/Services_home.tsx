@@ -75,12 +75,16 @@ const ServicesSection = () => {
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-6">
-          <h2 className="text-6xl sm:text-5xl font-bold mb-6">
+          <h2 className="text-6xl sm:text-5xl font-bold mb-2">
             Our <span className="text-orange-500">Services</span>
           </h2>
+          <h3 className="text-3xl sm:text-2xl font-bold mb-2">
+          Everything You Need to Succeed Online
+          </h3>
           <p className="text-lg font-bold text-gray-700 max-w-5xl mx-auto">
-            At Crew Tech Venture, we deliver technology-driven solutions that help businesses grow smarter, faster, and more efficiently
-          </p>
+          We're more than just a service provider—we're your growth partner. As a leading web development
+company in India and app development company in India, we offer comprehensive IT solutions tailored
+to your business needs.          </p>
         </div>
 
         {/* Desktop View */}

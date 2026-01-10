@@ -6,25 +6,32 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "How Long Does It Take To Build A Website?",
-      answer: "The timeline for building a website typically ranges from 2-8 weeks, depending on the complexity and features required. A simple website can be completed in 2-3 weeks, while more complex projects with custom features may take 6-8 weeks or more."
+      question: "What services does Crew Techventure offer?",
+      answer: "A: We're a full-service IT solutions provider offering web development, app development, digital marketing, and graphics design services. Whether you need a stunning website, a powerful mobile app, or a marketing campaign that converts, we've got you covered."
     },
     {
-      question: "What Is The Cost Of Developing A Mobile App?",
-      answer: "Mobile app development costs vary based on features, platforms (iOS, Android, or both), and complexity. Basic apps start from $10,000, while complex apps with advanced features can range from $50,000 to $150,000+. We provide detailed quotes after understanding your specific requirements."
+      question: "How long does it take to complete a project?",
+      answer: "A: Mobile app development costs vary based on features, platforms (iOS, Android, or both), and complexity. Basic apps start from $10,000, while complex apps with advanced features can range from $50,000 to $150,000+. We provide detailed quotes after understanding your specific requirements."
     },
     {
-      question: "Do You Provide Ongoing Support And Maintenance?",
-      answer: "Yes, we offer comprehensive support and maintenance packages. This includes regular updates, security patches, bug fixes, performance optimization, and technical support. We provide different support tiers to match your needs and budget."
+      question: "Do you work with small businesses or only enterprises?",
+      answer: "A: Both! We proudly serve small businesses, startups, and enterprises across India and beyond. Our solutions are scalable and customized to fit your business size, industry, and budget"
     },
     {
-      question: "Can You Help With Digital Marketing And SEO?",
-      answer: "Absolutely! We provide digital marketing services including SEO optimization, content strategy, social media marketing, and performance analytics. Our team ensures your website ranks well and reaches your target audience effectively."
+      question: "How much do your services cost?",
+      answer: "A: Our pricing is competitive and transparent. Costs depend on your project requirements, but we're committed to being cost-effective. Contact us for a free quote tailored to your specific needs—no hidden fees, no surprises."
     },
     {
-      question: "What Technologies Do You Use?",
-      answer: "We use modern, industry-standard technologies including React, Node.js, Python, React Native, Flutter for mobile apps, and cloud platforms like AWS and Google Cloud. We choose the best technology stack based on your project requirements."
-    }
+      question: "Can you help with ongoing support and maintenance?",
+      answer: "A: Absolutely! We offer ongoing support, maintenance, and updates for all our services. Your success is our success, and we're here to support you long after your project launches."
+    },
+    {
+      question: "Where is Crew Techventure located?",
+      answer: "A: We're a digital-first company operating entirely online, which allows us to serve clients across India and globally. This also helps us keep costs low and deliver faster results"},
+    {
+      question: "How do I get started?",
+      answer: "A: Easy! Just click any of our  Get Started buttons, fill out our contact form, or reach out directly via email or phone. We'll schedule a free consultation to discuss your goals and create a customized plan for your business." },
+   
   ];
 
   const toggleFAQ = (index) => {
