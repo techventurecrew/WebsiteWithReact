@@ -208,29 +208,40 @@ const AppContent = () => {
 
   // Control scrolling and body styles
   useEffect(() => {
+    // We only hide the cursor and lock scroll if we are ON the home page AND it's loading
     if (isHomePage && isHomeLoading) {
       document.body.style.overflow = 'hidden';
-      document.body.style.cursor = 'default'; // Regular cursor on loader
+      document.body.style.cursor = 'default';
     } else {
+      // On every other page, or when home is done loading:
       document.body.style.overflow = 'auto';
-      document.body.style.cursor = 'none'; // Custom cursor for site
+      document.body.style.cursor = 'none'; // Activates the Custom Cursor
     }
-  }, [isHomePage, isHomeLoading]);
+  }, [isHomePage, isHomeLoading, location.pathname]);
 
-  // Reset loading if user navigates back to Home
+  // Reset loading ONLY when navigating TO Home from another page
   useEffect(() => {
-    if (isHomePage) setIsHomeLoading(true);
+    if (isHomePage) {
+      setIsHomeLoading(true);
+    } else {
+      // If we are on Services, About, etc., we are definitely not "Home Loading"
+      setIsHomeLoading(false);
+    }
   }, [location.pathname]);
 
   const showNavAndFooter = !(isHomePage && isHomeLoading);
 
   return (
     <>
-      {/* Show custom cursor only when not in loading state */}
       <GridBackground />
-      {!isHomeLoading && <CustomCursor />}
-
       <ParticleNetworkBackground />
+
+      {/* Logic Change: 
+          Show cursor if:
+          1. We are NOT on the home page (About, Services, etc.)
+          2. OR we are on the home page and it's FINISHED loading
+      */}
+      {(!isHomePage || !isHomeLoading) && <CustomCursor />}
 
       <AnimatePresence>
         {isHomePage && isHomeLoading && (

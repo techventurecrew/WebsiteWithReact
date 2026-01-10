@@ -1,130 +1,166 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeLink, setActiveLink] = useState('');
     const [isVisible, setIsVisible] = useState(true);
+    const [isPastHero, setIsPastHero] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY) {
-                setIsVisible(false); // Hide navbar on scroll down
+
+            // 1. Detect if we are past the first 100vh
+            if (currentScrollY > window.innerHeight - 80) {
+                setIsPastHero(true);
             } else {
-                setIsVisible(true); // Show navbar on scroll up
+                setIsPastHero(false);
+            }
+
+            // 2. Smooth Hide/Show Logic
+            if (currentScrollY < lastScrollY || currentScrollY < 50) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
             }
             setLastScrollY(currentScrollY);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
 
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'About', href: 'about' },
-        { name: 'Services', href: 'services' },
-        { name: 'Projects', href: 'projects' },
-        { name: 'Contact', href: 'contact' },
+        { name: 'About', href: '/about' },
+        { name: 'Services', href: '/services' },
+        { name: 'Projects', href: '/projects' },
+        { name: 'Contact', href: '/contact' },
     ];
 
-    const handleLinkClick = (name) => {
-        setActiveLink(name);
-    };
+    // Dynamic Style logic based on scroll position
+    const navBackground = isPastHero
+        ? "bg-white/80 backdrop-blur-lg border-b border-orange-100"
+        : "bg-orange-500 border-b border-transparent";
 
-    const navLinkStyle = `text-xl font-base transition-colors duration-200 font-sans`;
-    const activeLinkStyle = `text-orange-800`;
-    const defaultLinkStyle = `text-white hover:text-orange-500`;
+    const linkColor = isPastHero ? "text-gray-700" : "text-white";
+    const activeLinkColor = isPastHero ? "text-orange-600" : "text-orange-900";
 
     return (
-        <nav
-            className={`bg-orange-500 shadow-sm fixed top-0 left-0 w-full z-50 transition-transform duration-400 ${isVisible ? 'translate-y-0' : '-translate-y-full'
-                }`}
+        <motion.nav
+            initial={{ y: 0 }}
+            animate={{ y: isVisible ? 0 : -100 }}
+            transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+            className={`fixed top-0 left-0 w-full z-[1000] transition-colors duration-500 ${navBackground}`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
-                    {/* Logo */}
-                    <div className="flex items-center space-x-3">
-                        <div className="relative w-16 h-16 cursor-pointer" onClick={() => window.location.href = '/'}>
+
+                    {/* Logo Section */}
+                    <Link to="/" className="flex items-center space-x-3 group">
+                        <div className="relative w-14 h-14 overflow-hidden rounded-full border-2 border-white transition-transform group-hover:scale-110">
                             <img
                                 src="/Images/crew.png"
                                 alt="Logo"
-                                className="w-full h-full rounded-full object-contain bg-white"
+                                className="w-full h-full object-contain bg-white p-1"
                             />
                         </div>
-                        <div className="flex flex-col leading-tight">
+                        <div className="h-8 md:h-10">
                             <img
                                 src="/Images/Crew_text.png"
-                                alt="Logo"
-                                className="w-full h-full object-contain"
+                                alt="CrewTechventure"
+                                className={`h-full w-auto object-contain transition-all duration-500 ${!isPastHero ? 'brightness-0 invert' : ''}`}
                             />
                         </div>
-                    </div>
+                    </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-10">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                onClick={() => handleLinkClick(link.name)}
-                                className={`${navLinkStyle} ${activeLink === link.name ? activeLinkStyle : defaultLinkStyle}`}
-                            >
-                                {link.name}
-                            </a>
-                        ))}
+                    <div className="hidden md:flex items-center space-x-8">
+                        {navLinks.map((link) => {
+                            const isActive = location.pathname === link.href;
+                            return (
+                                <Link
+                                    key={link.name}
+                                    to={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`relative px-2 py-1 text-sm lg:text-base font-bold tracking-tight transition-colors ${isActive ? activeLinkColor : `${linkColor} hover:text-orange-200`
+                                        }`}
+                                >
+                                    <span>{link.name}</span>
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="navUnderline"
+                                            className={`absolute -bottom-1 left-0 right-0 h-0.5 rounded-full ${isPastHero ? 'bg-orange-500' : 'bg-white'}`}
+                                        />
+                                    )}
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     {/* Get Started Button */}
                     <div className="hidden md:block">
-                        <button
-                            className="px-8 py-3 border-2 border-white text-white  rounded-full  font-medium hover:bg-orange-500 hover:text-white transition-all duration-300"
-                            onClick={() => console.log('Get Started button clicked')}
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => window.location.href = '/contact'}
+                            className={`px-8 py-3 rounded-full font-bold text-sm lg:text-base shadow-lg transition-all duration-500 ${isPastHero
+                                    ? 'bg-orange-500 text-white shadow-orange-500/20'
+                                    : 'bg-white text-orange-500 shadow-black/10'
+                                }`}
                         >
                             Get Started
-                        </button>
+                        </motion.button>
                     </div>
 
                     {/* Mobile menu button */}
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-gray-700 hover:text-orange-500 focus:outline-none"
+                            className={`p-2 transition-colors duration-500 ${isPastHero ? 'text-orange-600' : 'text-white'}`}
                         >
-                            {isOpen ? <X size={28} /> : <Menu size={28} />}
+                            {isOpen ? <X size={30} /> : <Menu size={30} />}
                         </button>
                     </div>
                 </div>
             </div>
 
-            {/* Mobile Navigation */}
-            {isOpen && (
-                <div className="md:hidden bg-white border-t border-gray-200">
-                    <div className="px-4 pt-4 pb-6 space-y-3">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                onClick={() => handleLinkClick(link.name)}
-                                className={`block px-4 py-2 text-base font-medium rounded-lg transition-colors duration-200 font-sans ${activeLink === link.name
-                                    ? 'text-orange-500 bg-orange-50'
-                                    : 'text-gray-700 hover:text-orange-500 hover:bg-gray-50'
-                                    }`}
+            {/* Mobile Navigation Drawer */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="md:hidden bg-white border-t border-orange-100"
+                    >
+                        <div className="px-6 pt-4 pb-8 space-y-4">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    to={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`block text-xl font-bold ${location.pathname === link.href ? 'text-orange-600' : 'text-gray-800'
+                                        }`}
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                            <button
+                                onClick={() => window.location.href = '/contact'}
+                                className="w-full mt-4 px-8 py-4 bg-orange-500 text-white rounded-2xl font-bold shadow-lg"
                             >
-                                {link.name}
-                            </a>
-                        ))}
-                        <button className="w-full mt-4 px-8 py-3 border-2 border-white text-white rounded-xl font-medium hover:bg-orange-500 hover:text-white transition-all duration-300">
-                            Get Started
-                        </button>
-                    </div>
-                </div>
-            )}
-        </nav>
+                                Get Started
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </motion.nav>
     );
 };
 

@@ -1,9 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const WhatWeDoSection = () => {
-    const [visibleItems, setVisibleItems] = useState({});
-    const itemsRef = useRef({});
-
     const services = [
         {
             id: 1,
@@ -27,179 +25,134 @@ const WhatWeDoSection = () => {
         }
     ];
 
-    useEffect(() => {
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    // Animation Variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+        }
+    };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setVisibleItems(prev => ({
-                        ...prev,
-                        [entry.target.dataset.id]: true
-                    }));
-                }
-            });
-        }, observerOptions);
-
-        Object.values(itemsRef.current).forEach(el => {
-            if (el) observer.observe(el);
-        });
-
-        return () => observer.disconnect();
-    }, []);
+    const itemVariants = {
+        hidden: { opacity: 0, x: -30 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
 
     return (
-        <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-            <style>{`
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(40px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes fadeInLeft {
-                    from {
-                        opacity: 0;
-                        transform: translateX(-60px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                @keyframes fadeInRight {
-                    from {
-                        opacity: 0;
-                        transform: translateX(60px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                .animate-fade-up {
-                    opacity: 0;
-                }
-                .animate-fade-up.visible {
-                    animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-                }
-
-                .animate-fade-left {
-                    opacity: 0;
-                }
-                .animate-fade-left.visible {
-                    animation: fadeInLeft 0.6s ease-out forwards;
-                }
-
-                .animate-fade-right {
-                    opacity: 0;
-                }
-                .animate-fade-right.visible {
-                    animation: fadeInRight 0.6s ease-out forwards;
-                }
-
-                .list-item.visible {
-                    animation: fadeInLeft 0.6s ease-out forwards;
-                }
-
-                .list-item:nth-child(1).visible { animation-delay: 0s; }
-                .list-item:nth-child(2).visible { animation-delay: 0.1s; }
-                .list-item:nth-child(3).visible { animation-delay: 0.2s; }
-                .list-item:nth-child(4).visible { animation-delay: 0.3s; }
-            `}</style>
-
+        <section className="bg-transparent py-24 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-                {/* Heading */}
-                <h2
-                    ref={el => itemsRef.current['heading'] = el}
-                    data-id="heading"
-                    className={`text-5xl sm:text-6xl font-bold mb-8 animate-fade-up ${visibleItems['heading'] ? 'visible' : ''}`}
-                >
-                    What we do
-                </h2>
+                {/* Heading & Intro */}
+                <div className="mb-16">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-5xl sm:text-7xl font-extrabold mb-8 tracking-tight"
+                    >
+                        What we <span className="text-orange-500">do</span>
+                    </motion.h2>
 
-                {/* Intro Text */}
-                <p
-                    ref={el => itemsRef.current['intro'] = el}
-                    data-id="intro"
-                    className={`text-lg text-gray-700 leading-relaxed mb-12 animate-fade-up ${visibleItems['intro'] ? 'visible' : ''}`}
-                >
-                    At Crew Techventure, we offer a wide range of services designed to help businesses establish a strong and memorable digital presence.
-                </p>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-xl text-gray-700 leading-relaxed max-w-3xl font-medium"
+                    >
+                        At Crew Techventure, we offer a wide range of services designed to help businesses establish a strong and memorable digital presence.
+                    </motion.p>
+                </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
-                    {/* Left Side - Content */}
-                    <div className="space-y-6">
+                <div className="grid lg:grid-cols-2 gap-16 items-start">
+                    {/* Left Side - Animated Services List */}
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        className="space-y-10"
+                    >
+                        {services.map((service) => (
+                            <motion.div
+                                key={service.id}
+                                variants={itemVariants}
+                                className="relative flex gap-6 group"
+                            >
+                                {/* Vertical Accent Bar */}
+                                <div className="w-1.5 bg-orange-500 flex-shrink-0 rounded-full h-auto transition-transform group-hover:scale-y-110 origin-top" />
 
-                        {/* Services List */}
-                        <div className="space-y-6">
-                            {services.map((service, index) => (
-                                <div
-                                    key={service.id}
-                                    data-id={`service-${service.id}`}
-                                    ref={el => itemsRef.current[`service-${service.id}`] = el}
-                                    className={`list-item flex gap-4 animate-fade-left ${visibleItems[`service-${service.id}`] ? 'visible' : ''}`}
-                                    style={{ animationDelay: `${index * 0.1}s` }}
-                                >
-                                    {/* Orange Bar */}
-                                    <div className="w-1 bg-orange-500 flex-shrink-0 rounded-full mt-1"></div>
-
-                                    {/* Service Content */}
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                            <span className="text-orange-500">✔</span>
-                                            {service.title}
-                                        </h3>
-                                        <ul className="space-y-2">
-                                            {service.items.map((item, idx) => (
-                                                <li key={idx} className="text-gray-700 flex gap-2">
-                                                    <span className="text-orange-500 flex-shrink-0 mt-1">•</span>
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                                <div className="flex-1">
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                                        <span className="text-orange-500">✔</span>
+                                        {service.title}
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {service.items.map((item, idx) => (
+                                            <motion.li
+                                                key={idx}
+                                                whileHover={{ x: 5 }}
+                                                className="text-gray-600 flex gap-3 text-lg font-medium leading-relaxed"
+                                            >
+                                                <span className="text-orange-500 mt-1.5 flex-shrink-0">•</span>
+                                                {item}
+                                            </motion.li>
+                                        ))}
+                                    </ul>
                                 </div>
-                            ))}
-                        </div>
+                            </motion.div>
+                        ))}
 
                         {/* Closing Statement */}
-                        <div
-                            ref={el => itemsRef.current['closing'] = el}
-                            data-id="closing"
-                            className={`list-item flex gap-4 mt-8 pt-6 border-t border-gray-200 animate-fade-left ${visibleItems['closing'] ? 'visible' : ''}`}
+                        <motion.div
+                            variants={itemVariants}
+                            className="flex gap-6 mt-12 pt-8 border-t border-gray-200"
                         >
-                            <div className="w-1 bg-orange-500 flex-shrink-0 rounded-full mt-1"></div>
-                            <p className="text-gray-700 italic">
+                            <div className="w-1.5 bg-orange-500 flex-shrink-0 rounded-full h-auto" />
+                            <p className="text-gray-700 italic text-xl font-semibold">
                                 We ensure every deliverable reflects your brand personality — clean, modern, and customer-focused.
                             </p>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
 
-                    {/* Right Side - Image */}
-                    <div
-                        ref={el => itemsRef.current['image'] = el}
-                        data-id="image"
-                        className={`flex justify-center items-start lg:sticky lg:top-20 animate-fade-right ${visibleItems['image'] ? 'visible' : ''}`}
+                    {/* Right Side - Sticky Image with Reveal Effect */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50, rotate: 2 }}
+                        whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="lg:sticky lg:top-32"
                     >
-                        <div className="w-full rounded-2xl overflow-hidden shadow-xl">
+                        <div className="relative group overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-white">
+                            {/* Animated Overlay */}
+                            <motion.div
+                                initial={{ x: "-100%" }}
+                                whileInView={{ x: "100%" }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent z-10 pointer-events-none"
+                            />
+
                             <img
                                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop"
                                 alt="Professional working at desk"
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                         </div>
-                    </div>
+
+                        {/* Decorative floating badge */}
+                        <motion.div
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-orange-100 hidden md:block"
+                        >
+                            <p className="text-orange-600 font-bold text-lg">Reliable Partner</p>
+                            <p className="text-gray-500 text-sm">Quality Guaranteed</p>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </div>
         </section>

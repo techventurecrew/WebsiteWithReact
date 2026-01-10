@@ -1,71 +1,33 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const OurStoryTeamSection = () => {
-    const [visibleItems, setVisibleItems] = useState({});
-    const itemsRef = useRef({});
-
     const teamMembers = [
-        {
-            id: 1,
-            name: 'Kanak Singhal',
-            description: 'CEO & Co-Founder Visionary leader driving innovation and strategic growth at Crew Techventure.',
-            initials: 'KS'
-        },
-        {
-            id: 2,
-            name: 'Amandeep',
-            description: 'Co-Founder and Project Manager Ensures every project runs smoothly from concept to completion with precision and care.',
-            initials: 'AM'
-        },
-        {
-            id: 3,
-            name: 'Pranav Singhal',
-            description: 'Co-Founder and App Developer Builds powerful, user-friendly mobile applications that solve real business problems.',
-            initials: 'PS'
-        },
-        {
-            id: 4,
-            name: 'Kaushal Chauhan',
-            description: ' Manager and Team Developer Leads our development team with technical excellence and collaborative spirit.',
-            initials: 'KC'
-        },
-        {
-            id: 5,
-            name: 'Akshit Chauhan',
-            description: 'Backend Team Manager Masters the backend architecture that powers seamless digital experiences.',
-            initials: 'AC'
-        },
-        {
-            id: 6,
-            name: 'Vanshaj Bansal',
-            description: 'Head of Web Development Crafts beautiful, high-performing websites that engage users and drive business growth.',
-            initials: 'VB'
-        }
+        { id: 1, name: 'Kanak Singhal', description: 'CEO & Co-Founder Visionary leader driving innovation and strategic growth.', initials: 'KS' },
+        { id: 2, name: 'Amandeep', description: 'Co-Founder and Project Manager Ensures every project runs with precision and care.', initials: 'AM' },
+        { id: 3, name: 'Pranav Singhal', description: 'Co-Founder and App Developer Builds powerful mobile applications for businesses.', initials: 'PS' },
+        { id: 4, name: 'Kaushal Chauhan', description: 'Manager and Team Developer Leads our development team with technical excellence.', initials: 'KC' },
+        { id: 5, name: 'Akshit Chauhan', description: 'Backend Team Manager Masters the architecture that powers digital experiences.', initials: 'AC' },
+        { id: 6, name: 'Vanshaj Bansal', description: 'Head of Web Development Crafts beautiful, high-performing websites.', initials: 'VB' }
     ];
 
-    useEffect(() => {
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    // Parent container for staggered children
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+        }
+    };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setVisibleItems(prev => ({
-                        ...prev,
-                        [entry.target.dataset.id]: true
-                    }));
-                }
-            });
-        }, observerOptions);
-
-        Object.values(itemsRef.current).forEach(el => {
-            if (el) observer.observe(el);
-        });
-
-        return () => observer.disconnect();
-    }, []);
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
 
     const getAvatarColor = (initials) => {
         const colors = ['bg-blue-500', 'bg-purple-500', 'bg-pink-500', 'bg-green-500', 'bg-orange-500', 'bg-red-500'];
@@ -74,194 +36,133 @@ const OurStoryTeamSection = () => {
     };
 
     return (
-        <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-            <style>{`
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(40px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes fadeInLeft {
-                    from {
-                        opacity: 0;
-                        transform: translateX(-60px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                @keyframes fadeInRight {
-                    from {
-                        opacity: 0;
-                        transform: translateX(60px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                .animate-fade-up {
-                    opacity: 0;
-                }
-                .animate-fade-up.visible {
-                    animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-                }
-
-                .animate-fade-left {
-                    opacity: 0;
-                }
-                .animate-fade-left.visible {
-                    animation: fadeInLeft 0.6s ease-out forwards;
-                }
-
-                .animate-fade-right {
-                    opacity: 0;
-                }
-                .animate-fade-right.visible {
-                    animation: fadeInRight 0.6s ease-out forwards;
-                }
-
-                .card-item.visible {
-                    animation: fadeInUp 0.6s ease-out forwards;
-                }
-
-                .card-item:nth-child(1).visible { animation-delay: 0s; }
-                .card-item:nth-child(2).visible { animation-delay: 0.15s; }
-                .card-item:nth-child(3).visible { animation-delay: 0.3s; }
-                .card-item:nth-child(4).visible { animation-delay: 0.45s; }
-                .card-item:nth-child(5).visible { animation-delay: 0.6s; }
-                .card-item:nth-child(6).visible { animation-delay: 0.75s; }
-            `}</style>
-
+        <section className="bg-transparent py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                {/* Our Story Section */}
-                <div className="mb-20">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        {/* Left Side - Image */}
-                        <div
-                            ref={el => itemsRef.current['story-image'] = el}
-                            data-id="story-image"
-                            className={`flex justify-center items-center animate-fade-left ${visibleItems['story-image'] ? 'visible' : ''}`}
+
+                {/* 1. Our Story Section */}
+                <div className="mb-32">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Left Side - Animated Image Frame */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="relative group"
                         >
-                            <div className="w-full rounded-2xl overflow-hidden shadow-xl">
+                            <div className="absolute -inset-4 bg-orange-500/10 rounded-[3rem] blur-2xl group-hover:bg-orange-500/20 transition-all duration-700" />
+                            <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
                                 <img
                                     src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
                                     alt="Team meeting presentation"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                                 />
                             </div>
-                        </div>
+                        </motion.div>
 
-                        {/* Right Side - Content */}
-                        <div className="space-y-6">
-                            <h2
-                                ref={el => itemsRef.current['story-heading'] = el}
-                                data-id="story-heading"
-                                className={`text-4xl sm:text-5xl font-bold animate-fade-up ${visibleItems['story-heading'] ? 'visible' : ''}`}
-                            >
+                        {/* Right Side - Story Content */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="space-y-8"
+                        >
+                            <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight">
                                 Our <span className="text-orange-500">Story</span>
                             </h2>
-                            <p
-                                ref={el => itemsRef.current['story-text'] = el}
-                                data-id="story-text"
-                                className={`text-base sm:text-lg text-gray-700 leading-relaxed text-justify animate-fade-up ${visibleItems['story-text'] ? 'visible' : ''}`}
-                            >
-                                Crew Techventure was founded with a simple belief: every business deserves a strong digital identity,
-                                regardless of size or budget. We understood the challenges small and medium-sized businesses face
-                                when trying to compete online—limited resources, tight budgets, and the overwhelming complexity of
-                                technology. That's where we saw an opportunity to make a difference.
-                                What started as a passion project has grown into a full-service technology solutions company in India.
-                                We've partnered with businesses across industries, helping them build visibility, strengthen their
-                                branding, and adapt to the fast-changing digital landscape. Our core values have remained the same:
-                                quality work, transparent pricing, and genuine partnerships.
-                                As an IT company for startups in India and a trusted partner for enterprise IT services India, we've closely
-                                collaborated with businesses to transform their traditional workflows into digital-first operations.
-                                Through modern tools, quality design, and smart solutions, we help businesses reach more customers,
-                                improve credibility, and grow confidently in competitive markets.
-                                Today, we're proud to be recognized as a reliable software development firm in India that's committed to
-                                making digital growth simple, accessible, and affordable for all. Our journey is driven by your success,
-                                and we're excited to continue building that future together</p>
-                            <button
-                                ref={el => itemsRef.current['story-btn'] = el}
-                                data-id="story-btn"
-                                className={`bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold text-base hover:bg-orange-600 transition-colors shadow-lg animate-fade-up ${visibleItems['story-btn'] ? 'visible' : ''}`}
+                            <div className="space-y-6 text-lg text-gray-700 leading-relaxed font-medium">
+                                <p className="text-justify">
+                                    Crew Techventure was founded with a simple belief: every business deserves a strong digital identity.
+                                    What started as a passion project has grown into a full-service technology solutions company in India.
+                                    Our core values have remained the same: quality work, transparent pricing, and genuine partnerships.
+                                </p>
+                                <p className="text-justify">
+                                    As a trusted partner for enterprise IT services, we've transformed traditional workflows into digital-first operations.
+                                    Today, we're proud to be a reliable software development firm committed to making digital growth affordable for all.
+                                </p>
+                            </div>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="bg-orange-500 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-orange-500/30 hover:bg-orange-600 transition-colors"
                             >
                                 Read about our story here
-                            </button>
-                        </div>
+                            </motion.button>
+                        </motion.div>
                     </div>
                 </div>
 
-                {/* Meet the Team Section */}
+                {/* 2. Meet the Team Section */}
                 <div>
-                    {/* Section Heading */}
-                    <div className="text-center mb-12">
-                        <h2
-                            ref={el => itemsRef.current['team-heading'] = el}
-                            data-id="team-heading"
-                            className={`text-4xl sm:text-5xl font-bold mb-4 animate-fade-up ${visibleItems['team-heading'] ? 'visible' : ''}`}
-                        >
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-20"
+                    >
+                        <h2 className="text-5xl md:text-7xl font-extrabold mb-6">
                             Meet the <span className="text-orange-500">Team</span>
                         </h2>
-                        <p
-                            ref={el => itemsRef.current['team-description'] = el}
-                            data-id="team-description"
-                            className={`text-base sm:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed animate-fade-up ${visibleItems['team-description'] ? 'visible' : ''}`}
-                        >
-                            Our team consists of passionate professionals dedicated to building meaningful digital experiences. Each
-                            member brings creativity, technical expertise, and a customer-first mindset to every project we
-                            undertake. Together, we turn ideas into reality.                        </p>
-                    </div>
+                        <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+                            A group of passionate professionals dedicated to building meaningful digital experiences through creativity and technical expertise.
+                        </p>
+                    </motion.div>
 
-                    {/* Team Cards */}
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    {/* Team Cards Grid - Staggered */}
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
+                    >
                         {teamMembers.map((member) => (
-                            <div
+                            <motion.div
                                 key={member.id}
-                                ref={el => itemsRef.current[`team-${member.id}`] = el}
-                                data-id={`team-${member.id}`}
-                                className={`card-item border-2 border-orange-500 rounded-2xl p-6 bg-white hover:shadow-xl transition-shadow duration-300 animate-fade-up ${visibleItems[`team-${member.id}`] ? 'visible' : ''}`}
+                                variants={cardVariants}
+                                whileHover={{ y: -10 }}
+                                className="group relative bg-white/80 backdrop-blur-md border-2 border-orange-100 rounded-[2.5rem] p-8 transition-all hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/10"
                             >
                                 <div className="flex flex-col items-center text-center">
-                                    {/* Avatar */}
-                                    <div className={`w-20 h-20 ${getAvatarColor(member.initials)} rounded-full flex items-center justify-center flex-shrink-0 mb-4 shadow-lg`}>
-                                        <span className="text-white text-2xl font-bold">
-                                            {member.initials}
-                                        </span>
+                                    {/* Avatar with Magnetic Glow */}
+                                    <div className="relative mb-6">
+                                        <div className={`absolute inset-0 rounded-full blur-xl opacity-30 ${getAvatarColor(member.initials)}`} />
+                                        <div className={`relative w-24 h-24 ${getAvatarColor(member.initials)} rounded-full flex items-center justify-center shadow-lg border-4 border-white transition-transform group-hover:scale-110`}>
+                                            <span className="text-white text-3xl font-bold">{member.initials}</span>
+                                        </div>
                                     </div>
 
-                                    {/* Member Info */}
-                                    <div>
-                                        <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                                        <p className="text-sm text-orange-500 font-semibold mb-2">
-                                            {member.description}
-                                        </p>
-                                    </div>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                                    <p className="text-orange-600 font-bold uppercase tracking-wider text-xs mb-4">
+                                        Team Lead
+                                    </p>
+                                    <p className="text-gray-600 font-medium leading-relaxed line-clamp-3">
+                                        {member.description}
+                                    </p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
 
-                    {/* CTA Button */}
-                    <div className="flex justify-center">
-                        <button
-                            ref={el => itemsRef.current['hiring-btn'] = el}
-                            data-id="hiring-btn"
+                    {/* Final Hiring CTA */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="flex justify-center"
+                    >
+                        <motion.button
+                            whileHover={{
+                                scale: 1.1,
+                                boxShadow: "0 20px 25px -5px rgba(249, 115, 22, 0.4)"
+                            }}
+                            whileTap={{ scale: 0.95 }}
                             onClick={() => window.location.href = 'hiring'}
-                            className={`bg-orange-500 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-colors shadow-lg animate-fade-up ${visibleItems['hiring-btn'] ? 'visible' : ''}`}
+                            className="bg-orange-500 text-white px-12 py-5 rounded-[2rem] font-bold text-xl shadow-2xl shadow-orange-500/20 transition-all"
                         >
                             Take a look at our open positions
-                        </button>
-                    </div>
+                        </motion.button>
+                    </motion.div>
                 </div>
             </div>
         </section>
