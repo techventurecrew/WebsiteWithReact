@@ -13,9 +13,8 @@ const CareerTeamSection = () => {
                         Career
                     </h1>
                     <p className="text-base sm:text-lg text-white opacity-95 leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. , mattis
-                        ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus..
-                    </p>
+                        Join a team that values creativity, innovation, and collaboration. We're always looking for talented
+                        individuals who share our passion for digital excellence. </p>
                 </div>
             </div>
 

@@ -60,10 +60,10 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <h2 className="text-5xl sm:text-6xl font-bold mb-6">
             Our <span className="text-orange-500">Projects</span>
           </h2>
@@ -85,13 +85,17 @@ const ProjectsSection = () => {
               return (
                 <div
                   key={project.id}
-                  className={`absolute transition-all duration-500 ease-in-out ${
+                  className={`absolute transition-all ease-in-out ${
                     isCenter
                       ? 'z-30 scale-100 opacity-100'
                       : isLeft
-                      ? 'z-10 scale-75 opacity-60 -translate-x-[400px]'
-                      : 'z-10 scale-75 opacity-60 translate-x-[400px]'
+                      ? 'z-10 scale-75 opacity-60 -translate-x-[400px] -rotate-6'
+                      : 'z-10 scale-75 opacity-60 translate-x-[400px] rotate-6'
                   }`}
+                  style={{ 
+                    transitionDuration: '1500ms', // Explicitly setting a slow 1.5s transition
+                    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' // Smoother acceleration/deceleration
+                  }}
                 >
                   <div className="bg-gray-100 rounded-3xl border-4 border-orange-500 overflow-hidden shadow-2xl w-[400px] lg:w-[500px]">
                     <div className="h-64 bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden">

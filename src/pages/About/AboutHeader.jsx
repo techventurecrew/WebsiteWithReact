@@ -99,7 +99,7 @@ const AboutSectionWithWaves = () => {
             </div>
 
             {/* Content Section */}
-            <div className="py-16 px-4 sm:px-6 lg:px-8">
+            <div className="py-6 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         {/* Left Side - Heading */}
@@ -114,7 +114,7 @@ const AboutSectionWithWaves = () => {
                         </div>
 
                         {/* Right Side - About Content */}
-                        <div className="space-y-4">
+                        <div className="space-y-3">
                             <h3
                                 ref={el => itemsRef.current['about-heading'] = el}
                                 data-id="about-heading"
@@ -127,10 +127,18 @@ const AboutSectionWithWaves = () => {
                                 data-id="about-text"
                                 className={`text-base sm:text-lg font-semibold text-gray-700 leading-relaxed animate-fade-up ${visibleItems['about-text'] ? 'visible' : ''}`}
                             >
-                                Crew Techventure is dedicated to empowering local businesses by helping them build, grow, and strengthen their online presence. In today's digital world, visibility and professionalism are essential for success — and we make that transformation simple and accessible.
-
-                                With a focus on modern, reliable, and affordable digital solutions, we help small and medium enterprises upgrade from traditional operations to fully digital, high-impact systems. Whether it's a website, software, mobile app, branding, or digital marketing, our goal is to ensure every business stands out and grows confidently in the online marketplace.
-                            </p>
+                                Crew Techventure is dedicated to empowering businesses of all sizes by helping them build, grow, and
+                                strengthen their online presence. As a leading technology solutions company in India, we understand
+                                that in today's digital world, visibility and professionalism are essential for success—and we make it
+                                accessible to everyone.
+                                We're more than just a service provider—we're your trusted IT services provider in India. Our mission is
+                                simple: deliver reliable and affordable digital solutions that help small businesses and enterprises
+                                upgrade from traditional operations to fully digital, high-impact systems. Whether it's a website,
+                                software, mobile app, branding, or digital marketing, our goal is to ensure every business stands out and
+                                grows confidently in the online marketplace.
+                                At Crew Techventure, we believe great technology shouldn't break the bank. That's why we combine
+                                speed, quality, and cost-effectiveness to give you the competitive edge you need to succeed in the digital
+                                age.   </p>
                         </div>
                     </div>
                 </div>

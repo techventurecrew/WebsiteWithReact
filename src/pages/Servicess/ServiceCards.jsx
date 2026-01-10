@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Code, Smartphone, Palette, BarChart3, Rocket, Megaphone, X } from 'lucide-react';
 
 const ServicesCardsGrid = () => {
     const [selectedService, setSelectedService] = useState(null);
-
+    const navigate = useNavigate();
     const services = [
         {
             id: 1,
@@ -23,19 +24,19 @@ const ServicesCardsGrid = () => {
         },
         {
             id: 2,
-            icon: Smartphone,
-            title: 'App Development',
-            description: 'We design and build intuitive mobile apps for iOS, Android, and cross-platform needs.',
-            gradient: 'from-orange-500 to-red-600',
-            detailedDescription: 'Transform your ideas into powerful mobile applications. Our team specializes in creating seamless, user-friendly apps that deliver exceptional performance across all devices and platforms, ensuring your users have the best experience.',
+            icon: Megaphone,
+            title: 'Digital Marketing',
+            description: 'Reach your target audience with strategic digital marketing campaigns.',
+            gradient: 'from-orange-500 to-orange-600',
+            detailedDescription: 'Amplify your brand reach with data-driven digital marketing strategies. From social media to email campaigns, we create integrated marketing solutions that drive engagement, build brand awareness, and maximize conversions.',
             steps: [
-                'Concept & Strategy: Defining app features, user flows, and business objectives',
-                'UI/UX Design: Crafting intuitive and beautiful interfaces that users love',
-                'Development: Building native or cross-platform apps with optimal performance',
-                'Integration: Connecting APIs, databases, and backend services',
-                'Testing: Rigorous quality assurance on multiple devices and OS versions',
-                'App Store Submission: Publishing to iOS App Store and Google Play Store',
-                'Post-Launch Support: Updates, bug fixes, new features, and enhancements'
+                'Market Research: Understanding your audience, competitors, and opportunities',
+                'Strategy Development: Creating a comprehensive multi-channel marketing plan',
+                'Campaign Creation: Designing engaging ad content and compelling copy',
+                'Multi-Channel Execution: Running campaigns across social, email, and paid ads',
+                'A/B Testing: Optimizing campaigns for better performance and ROI',
+                'Analytics & Tracking: Measuring engagement, conversions, and revenue',
+                'Continuous Optimization: Refining strategies based on data and insights'
             ]
         },
         {
@@ -90,19 +91,19 @@ const ServicesCardsGrid = () => {
         },
         {
             id: 6,
-            icon: Megaphone,
-            title: 'Digital Marketing',
-            description: 'Reach your target audience with strategic digital marketing campaigns.',
-            gradient: 'from-orange-500 to-orange-600',
-            detailedDescription: 'Amplify your brand reach with data-driven digital marketing strategies. From social media to email campaigns, we create integrated marketing solutions that drive engagement, build brand awareness, and maximize conversions.',
+            icon: Smartphone,
+            title: 'App Development',
+            description: 'We design and build intuitive mobile apps for iOS, Android, and cross-platform needs.',
+            gradient: 'from-orange-500 to-red-600',
+            detailedDescription: 'Transform your ideas into powerful mobile applications. Our team specializes in creating seamless, user-friendly apps that deliver exceptional performance across all devices and platforms, ensuring your users have the best experience.',
             steps: [
-                'Market Research: Understanding your audience, competitors, and opportunities',
-                'Strategy Development: Creating a comprehensive multi-channel marketing plan',
-                'Campaign Creation: Designing engaging ad content and compelling copy',
-                'Multi-Channel Execution: Running campaigns across social, email, and paid ads',
-                'A/B Testing: Optimizing campaigns for better performance and ROI',
-                'Analytics & Tracking: Measuring engagement, conversions, and revenue',
-                'Continuous Optimization: Refining strategies based on data and insights'
+                'Concept & Strategy: Defining app features, user flows, and business objectives',
+                'UI/UX Design: Crafting intuitive and beautiful interfaces that users love',
+                'Development: Building native or cross-platform apps with optimal performance',
+                'Integration: Connecting APIs, databases, and backend services',
+                'Testing: Rigorous quality assurance on multiple devices and OS versions',
+                'App Store Submission: Publishing to iOS App Store and Google Play Store',
+                'Post-Launch Support: Updates, bug fixes, new features, and enhancements'
             ]
         }
     ];
@@ -228,6 +229,8 @@ const ServicesCardsGrid = () => {
                             {/* CTA Button */}
                             <div className="mt-8 pt-6 border-t border-gray-200">
                                 <button
+                                    onClick={() => navigate('/contact')} // Navigate to contact form
+
                                     className={`w-full bg-gradient-to-br ${selectedService.gradient} text-white font-semibold py-4 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
                                 >
                                     Get Started with {selectedService.title}

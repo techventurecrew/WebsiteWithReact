@@ -36,24 +36,24 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-orange-500 font-bold text-lg mb-4 tracking-wide">
+        <div className="text-center mb-12">
+          <p className="text-orange-500 font-bold text-lg mb-2 tracking-wide">
             TRUSTED BY BUSINESSES
           </p>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
             Our Happy <span className="text-orange-500">Clients</span>
           </h2>
         </div>
-
+ 
         {/* Testimonial Carousel */}
         <div className="relative flex items-center justify-center">
           {/* Previous Button */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-100 hover:bg-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+            className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-100 hover:bg-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-orange-500" />
@@ -93,7 +93,7 @@ const TestimonialsSection = () => {
           {/* Next Button */}
           <button
             onClick={nextTestimonial}
-            className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-100 hover:bg-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+            className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-100 hover:bg-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-orange-500" />

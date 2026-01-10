@@ -8,37 +8,37 @@ const OurStoryTeamSection = () => {
         {
             id: 1,
             name: 'Kanak Singhal',
-            description: 'CEO & Co-Founder',
+            description: 'CEO & Co-Founder Visionary leader driving innovation and strategic growth at Crew Techventure.',
             initials: 'KS'
         },
         {
             id: 2,
             name: 'Amandeep',
-            description: 'Co-Founder and Project Manager',
+            description: 'Co-Founder and Project Manager Ensures every project runs smoothly from concept to completion with precision and care.',
             initials: 'AM'
         },
         {
             id: 3,
             name: 'Pranav Singhal',
-            description: 'Co-Founder and App Developer',
+            description: 'Co-Founder and App Developer Builds powerful, user-friendly mobile applications that solve real business problems.',
             initials: 'PS'
         },
         {
             id: 4,
             name: 'Kaushal Chauhan',
-            description: 'Manager and Figma Designer',
+            description: ' Manager and Team Developer Leads our development team with technical excellence and collaborative spirit.',
             initials: 'KC'
         },
         {
             id: 5,
             name: 'Akshit Chauhan',
-            description: 'Backend Team Manager',
+            description: 'Backend Team Manager Masters the backend architecture that powers seamless digital experiences.',
             initials: 'AC'
         },
         {
             id: 6,
             name: 'Vanshaj Bansal',
-            description: 'Head of Website Development',
+            description: 'Head of Web Development Crafts beautiful, high-performing websites that engage users and drive business growth.',
             initials: 'VB'
         }
     ];
@@ -175,14 +175,21 @@ const OurStoryTeamSection = () => {
                                 data-id="story-text"
                                 className={`text-base sm:text-lg text-gray-700 leading-relaxed text-justify animate-fade-up ${visibleItems['story-text'] ? 'visible' : ''}`}
                             >
-                                Crew Techventure was founded with a simple belief: every local business deserves a strong digital identity.
-
-                                We understand the challenges small and medium businesses face in today's competitive digital era. Many struggle with visibility, branding, and adapting to fast-changing technology — and that's where we step in.
-
-                                Our team closely collaborates with businesses to transform their traditional workflows into digital-first operations. Through modern tools, quality design, and smart solutions, we empower businesses to reach more customers, improve credibility, and grow confidently.
-
-                                We are committed to making digital growth simple, accessible, and affordable for all.
-                            </p>
+                                Crew Techventure was founded with a simple belief: every business deserves a strong digital identity,
+                                regardless of size or budget. We understood the challenges small and medium-sized businesses face
+                                when trying to compete online—limited resources, tight budgets, and the overwhelming complexity of
+                                technology. That's where we saw an opportunity to make a difference.
+                                What started as a passion project has grown into a full-service technology solutions company in India.
+                                We've partnered with businesses across industries, helping them build visibility, strengthen their
+                                branding, and adapt to the fast-changing digital landscape. Our core values have remained the same:
+                                quality work, transparent pricing, and genuine partnerships.
+                                As an IT company for startups in India and a trusted partner for enterprise IT services India, we've closely
+                                collaborated with businesses to transform their traditional workflows into digital-first operations.
+                                Through modern tools, quality design, and smart solutions, we help businesses reach more customers,
+                                improve credibility, and grow confidently in competitive markets.
+                                Today, we're proud to be recognized as a reliable software development firm in India that's committed to
+                                making digital growth simple, accessible, and affordable for all. Our journey is driven by your success,
+                                and we're excited to continue building that future together</p>
                             <button
                                 ref={el => itemsRef.current['story-btn'] = el}
                                 data-id="story-btn"
@@ -210,8 +217,9 @@ const OurStoryTeamSection = () => {
                             data-id="team-description"
                             className={`text-base sm:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed animate-fade-up ${visibleItems['team-description'] ? 'visible' : ''}`}
                         >
-                            Our team consists of passionate professionals dedicated to building meaningful digital experiences. Each member brings creativity, technical expertise, and a customer-first mindset.
-                        </p>
+                            Our team consists of passionate professionals dedicated to building meaningful digital experiences. Each
+                            member brings creativity, technical expertise, and a customer-first mindset to every project we
+                            undertake. Together, we turn ideas into reality.                        </p>
                     </div>
 
                     {/* Team Cards */}

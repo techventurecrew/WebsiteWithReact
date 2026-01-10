@@ -1,9 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeLink, setActiveLink] = useState('');
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY) {
+                setIsVisible(false); // Hide navbar on scroll down
+            } else {
+                setIsVisible(true); // Show navbar on scroll up
+            }
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollY]);
 
     const navLinks = [
         { name: 'Home', href: '/' },
@@ -17,13 +36,20 @@ const Navbar = () => {
         setActiveLink(name);
     };
 
+    const navLinkStyle = `text-xl font-base transition-colors duration-200 font-sans`;
+    const activeLinkStyle = `text-orange-800`;
+    const defaultLinkStyle = `text-white hover:text-orange-500`;
+
     return (
-        <nav className="bg-orange-600 shadow-sm fixed top-0 left-0 w-full z-50">
+        <nav
+            className={`bg-orange-500 shadow-sm fixed top-0 left-0 w-full z-50 transition-transform duration-400 ${isVisible ? 'translate-y-0' : '-translate-y-full'
+                }`}
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
                     <div className="flex items-center space-x-3">
-                        <div className="relative w-16 h-16">
+                        <div className="relative w-16 h-16 cursor-pointer" onClick={() => window.location.href = '/'}>
                             <img
                                 src="/Images/crew.png"
                                 alt="Logo"
@@ -40,16 +66,13 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-8">
+                    <div className="hidden md:flex items-center space-x-10">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => handleLinkClick(link.name)}
-                                className={`text-base font-medium transition-colors duration-200 ${activeLink === link.name
-                                    ? 'text-orange-800'
-                                    : 'text-white hover:text-orange-500'
-                                    }`}
+                                className={`${navLinkStyle} ${activeLink === link.name ? activeLinkStyle : defaultLinkStyle}`}
                             >
                                 {link.name}
                             </a>
@@ -87,7 +110,7 @@ const Navbar = () => {
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => handleLinkClick(link.name)}
-                                className={`block px-4 py-2 text-base font-medium rounded-lg transition-colors duration-200 ${activeLink === link.name
+                                className={`block px-4 py-2 text-base font-medium rounded-lg transition-colors duration-200 font-sans ${activeLink === link.name
                                     ? 'text-orange-500 bg-orange-50'
                                     : 'text-gray-700 hover:text-orange-500 hover:bg-gray-50'
                                     }`}
