@@ -60,7 +60,7 @@ const CareerTeamSection = () => {
             </motion.div>
 
             {/* 2. Meet the Team Intro */}
-            <div className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50 backdrop-blur-sm">
+            <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50/50 backdrop-blur-sm">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
                         {/* Left Side - Animated Heading */}

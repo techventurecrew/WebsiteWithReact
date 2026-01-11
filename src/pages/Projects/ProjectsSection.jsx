@@ -67,7 +67,7 @@ const ProjectsSection = () => {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-5xl sm:text-7xl font-extrabold mb-6">
+                    <h2 className="text-5xl sm:text-7xl font-extrabold mb-4">
                         Our <span className="text-orange-500">Projects</span>
                     </h2>
                     <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto font-medium">
@@ -76,7 +76,7 @@ const ProjectsSection = () => {
                 </motion.div>
 
                 {/* Category Tabs - Floating Layout */}
-                <div className="flex flex-wrap justify-center gap-3 mb-20">
+                <div className="flex flex-wrap justify-center gap-3 mb-8">
                     {categories.map((category) => (
                         <motion.button
                             key={category}

@@ -73,7 +73,7 @@ const OpenPositionsSection = () => {
     };
 
     return (
-        <section className="bg-transparent py-24 px-4 sm:px-6 lg:px-8">
+        <section className="bg-transparent py-6 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
 
                 {/* Section Heading - Animated Reveal */}
@@ -81,7 +81,7 @@ const OpenPositionsSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="text-center mb-10"
                 >
                     <h2 className="text-5xl sm:text-7xl font-black text-gray-900 leading-tight">
                         Currently Open <span className="text-orange-500">Positions</span>

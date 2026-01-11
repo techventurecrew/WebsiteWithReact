@@ -1,145 +1,102 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
-const AboutSection = () => {
-    // Animation Variants
-    const fadeInSide = (direction) => ({
-        hidden: {
-            opacity: 0,
-            x: direction === 'left' ? -60 : 60
-        },
-        visible: {
-            opacity: 1,
-            x: 0,
-            transition: { duration: 0.8, ease: "easeOut" }
-        }
-    });
-
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 40 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6, ease: "easeOut" }
-        }
-    };
-
+const AboutHeader = () => {
     return (
-        <section className="bg-transparent overflow-hidden">
-            {/* New Tech-Theme Header (Replaces the Wave) */}
-            <div className="relative bg-gradient-to-br from-orange-600 to-orange-400 py-20 px-4">
-                <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+        <section className="bg-transparent pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+                    {/* Left Side - Brand Story Intro */}
                     <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeInSide('left')}
-                        className="text-white z-10"
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="space-y-8"
                     >
-                        <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                            Building the <br />
-                            <span className="text-orange-900">Digital Future</span>
+                        <div className="inline-block px-4 py-2 bg-orange-100 rounded-xl">
+                            <span className="text-orange-600 font-bold tracking-widest text-sm uppercase">Our Identity</span>
+                        </div>
+                        <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.1] tracking-tighter">
+                            A Crew Driven by <span className="text-orange-500">Innovation.</span>
                         </h1>
-                        <p className="text-xl opacity-90 font-medium max-w-lg">
-                            We are a collective of creators, thinkers, and builders dedicated to
-                            transforming traditional businesses into digital powerhouses.
+                        <p className="text-xl text-gray-700 font-medium leading-relaxed max-w-xl">
+                            We aren't just developers; we are digital architects. CrewTechventure was born to bridge the gap between complex technology and growing businesses.
                         </p>
                     </motion.div>
 
+                    {/* Right Side - The Custom Animated Core (No External URL Needed) */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1 }}
-                        className="flex justify-center lg:justify-end"
+                        className="relative flex justify-center lg:justify-end"
                     >
-                        {/* High-tech Lottie instead of a wave image */}
-                        <div className="w-full max-w-md bg-white/10 backdrop-blur-md rounded-[3rem] p-8 border border-white/20 shadow-2xl">
-                            <DotLottieReact
-                                src="https://lottie.host/4612e36b-67a4-4458-9411-9a7995167b6a/9P3S3G8Xm4.lottie"
-                                loop
-                                autoplay
-                            />
-                        </div>
+                        <motion.div
+                            animate={{ y: [0, -15, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="relative w-full max-w-[500px] aspect-square bg-white/60 backdrop-blur-2xl rounded-[3.5rem] border-2 border-orange-100 shadow-2xl flex items-center justify-center p-6 overflow-hidden"
+                        >
+                            {/* 1. Animated Geometric Background */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                    className="w-80 h-80 border-2 border-dashed border-orange-500/20 rounded-full"
+                                />
+                                <motion.div
+                                    animate={{ rotate: -360 }}
+                                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                    className="absolute w-64 h-64 border-2 border-dashed border-orange-500/40 rounded-full"
+                                />
+                            </div>
+
+                            {/* 2. The Digital Core - Your Logo Centralized */}
+                            <div className="relative z-10 w-48 h-48 flex items-center justify-center">
+                                {/* Outer Pulsing Ring */}
+                                <motion.div
+                                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+                                    transition={{ duration: 3, repeat: Infinity }}
+                                    className="absolute inset-0 bg-orange-500 rounded-full blur-3xl"
+                                />
+
+                                {/* Logo Image */}
+                                <motion.img
+                                    src="/Images/crew.png"
+                                    alt="Crew Logo"
+                                    className="w-32 h-32 object-contain relative z-20 drop-shadow-[0_0_15px_rgba(249,115,22,0.5)]"
+                                    animate={{ scale: [1, 1.05, 1] }}
+                                    transition={{ duration: 4, repeat: Infinity }}
+                                />
+                            </div>
+
+                            {/* 3. Floating Tech Particles (SVG based) */}
+                            <div className="absolute inset-0 z-0 opacity-20">
+                                {[...Array(6)].map((_, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="absolute w-2 h-2 bg-orange-500 rounded-full"
+                                        animate={{
+                                            x: [Math.random() * 400, Math.random() * 400],
+                                            y: [Math.random() * 400, Math.random() * 400],
+                                            opacity: [0, 1, 0]
+                                        }}
+                                        transition={{ duration: 5 + i, repeat: Infinity }}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Status Tag */}
+                            <div className="absolute top-10 right-10 bg-white/90 px-4 py-2 rounded-2xl shadow-lg border border-orange-100 z-20">
+                                <p className="text-orange-600 font-black text-xs uppercase tracking-tighter">STATUS: INNOVATING</p>
+                            </div>
+                        </motion.div>
                     </motion.div>
-                </div>
 
-                {/* Decorative Bottom Curve to transition to content */}
-                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-                    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="relative block w-full h-20">
-                        <path d="M0,120 C480,120 960,0 1440,0 L1440,120 L0,120 Z" fill="#F9FAFB"></path>
-                    </svg>
-                </div>
-            </div>
-
-            {/* Main Content Section */}
-            <div className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50 backdrop-blur-sm">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid lg:grid-cols-2 gap-16 items-start">
-
-                        {/* Left Side - Catchy Heading */}
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeInSide('left')}
-                        >
-                            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight border-l-8 border-orange-500 pl-8">
-                                We bridge the gap between <span className="text-orange-500">Traditional Business</span> and Modern Technology.
-                            </h2>
-                        </motion.div>
-
-                        {/* Right Side - About Content */}
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={containerVariants}
-                            className="space-y-8"
-                        >
-                            <motion.h3 variants={fadeInUp} className="text-4xl font-extrabold text-gray-900">
-                                About <span className="text-orange-500 underline decoration-4 underline-offset-8">Crewtechventure</span>
-                            </motion.h3>
-
-                            <motion.div variants={fadeInUp} className="space-y-6 text-lg text-gray-700 font-medium leading-relaxed">
-                                <p>
-                                    Crew Techventure is dedicated to empowering businesses of all sizes by helping them build, grow, and
-                                    strengthen their online presence. As a leading technology solutions company in India, we understand
-                                    that in today's digital world, visibility and professionalism are essential for success.
-                                </p>
-
-                                <div className="p-6 bg-orange-500 text-white rounded-3xl shadow-lg transform -rotate-1">
-                                    <p className="font-bold">
-                                        "We're more than just a service provider—we're your trusted IT partner."
-                                    </p>
-                                </div>
-
-                                <p>
-                                    Our mission is simple: deliver reliable and affordable digital solutions that help small businesses and enterprises
-                                    upgrade from traditional operations to fully digital, high-impact systems. Whether it's a website,
-                                    software, mobile app, or branding, our goal is to ensure you grow confidently in the online marketplace.
-                                </p>
-
-                                <p className="text-orange-600 font-bold border-t-2 border-orange-100 pt-6">
-                                    At Crew Techventure, we believe great technology shouldn't break the bank.
-                                </p>
-                            </motion.div>
-                        </motion.div>
-                    </div>
                 </div>
             </div>
         </section>
     );
 };
 
-// Internal variants for staggering the right-side text
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.2 }
-    }
-};
-
-export default AboutSection;
+export default AboutHeader;

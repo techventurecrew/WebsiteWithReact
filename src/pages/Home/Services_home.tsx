@@ -65,7 +65,7 @@ const ServicesSection = () => {
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
 
   return (
-    <section className="bg-gray-50 py-20 overflow-hidden">
+    <section className="bg-gray-50 py-6 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header - Animated */}
@@ -74,12 +74,12 @@ const ServicesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-6"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
             Our <span className="text-orange-500">Services</span>
           </h2>
-          <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-800">
+          <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">
             Everything You Need to Succeed Online
           </h3>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto font-medium">
@@ -93,7 +93,7 @@ const ServicesSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="hidden md:flex flex-wrap justify-center gap-8 mb-12"
+          className="hidden md:flex flex-wrap justify-center gap-8 mb-6"
         >
           {services.map((service, index) => (
             <motion.div

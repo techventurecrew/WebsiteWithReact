@@ -26,7 +26,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="bg-white py-10 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Header - Animated Entrance */}
@@ -34,7 +34,7 @@ const ProjectsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-2"
         >
           <h2 className="text-5xl md:text-7xl font-bold mb-4">
             Our <span className="text-orange-500">Projects</span>

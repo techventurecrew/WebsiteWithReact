@@ -132,7 +132,7 @@ const TestimonialsSection = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="text-xl md:text-2xl text-gray-700 italic font-medium leading-relaxed mb-8 relative z-10"
+                    className="text-xl md:text-2xl text-gray-700 italic font-medium leading-relaxed mb-4 relative z-10"
                   >
                     "{testimonials[currentIndex].quote}"
                   </motion.p>
