@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Added useEffect
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -47,8 +47,18 @@ const ProjectsSection = () => {
     const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % currentProjects.length);
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + currentProjects.length) % currentProjects.length);
 
+    // --- Added Auto-sliding Logic ---
+    useEffect(() => {
+        const autoPlay = setInterval(() => {
+            nextSlide();
+        }, 4000); // Change slide every 4 seconds
+
+        return () => clearInterval(autoPlay); // Cleanup timer on unmount/re-render
+    }, [currentSlide, activeCategory]); // Restart timer if slide or category changes
+
     const getVisibleProjects = () => {
         const visible = [];
+        if (currentProjects.length === 0) return [];
         for (let i = -1; i <= 1; i++) {
             const index = (currentSlide + i + currentProjects.length) % currentProjects.length;
             visible.push({ ...currentProjects[index], position: i });
@@ -60,7 +70,7 @@ const ProjectsSection = () => {
         <section className="bg-transparent py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto">
 
-                {/* Header - Staggered entrance */}
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +85,7 @@ const ProjectsSection = () => {
                     </p>
                 </motion.div>
 
-                {/* Category Tabs - Floating Layout */}
+                {/* Category Tabs */}
                 <div className="flex flex-wrap justify-center gap-3 mb-8">
                     {categories.map((category) => (
                         <motion.button
@@ -129,7 +139,6 @@ const ProjectsSection = () => {
                                             <div className="h-64 overflow-hidden relative group">
                                                 <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                                                    {/* <span className="text-white font-bold">View Case Study →</span> */}
                                                 </div>
                                             </div>
 
@@ -151,11 +160,21 @@ const ProjectsSection = () => {
                         </AnimatePresence>
                     </div>
 
-                    {/* Navigation Buttons */}
-                    <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={prevSlide} className="absolute left-0 md:left-4 z-40 w-14 h-14 bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-orange-500 shadow-xl">
+                    {/* Navigation Buttons - MODIFIED: Added 'hidden md:flex' */}
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={prevSlide}
+                        className="hidden md:flex absolute left-0 md:left-4 z-40 w-14 h-14 bg-white border-2 border-orange-500 rounded-full items-center justify-center text-orange-500 shadow-xl"
+                    >
                         <ChevronLeft size={30} />
                     </motion.button>
-                    <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={nextSlide} className="absolute right-0 md:right-4 z-40 w-14 h-14 bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-orange-500 shadow-xl">
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={nextSlide}
+                        className="hidden md:flex absolute right-0 md:right-4 z-40 w-14 h-14 bg-white border-2 border-orange-500 rounded-full items-center justify-center text-orange-500 shadow-xl"
+                    >
                         <ChevronRight size={30} />
                     </motion.button>
                 </div>

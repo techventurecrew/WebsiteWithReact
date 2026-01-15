@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const [direction, setDirection] = useState(0);
 
   const testimonials = [
     {
@@ -29,9 +29,9 @@ const TestimonialsSection = () => {
 
   const variants = {
     enter: (direction) => ({
-      x: direction > 0 ? 200 : -200,
+      x: direction > 0 ? '100%' : '-100%',
       opacity: 0,
-      scale: 0.9
+      scale: 0.95
     }),
     center: {
       zIndex: 1,
@@ -41,9 +41,9 @@ const TestimonialsSection = () => {
     },
     exit: (direction) => ({
       zIndex: 0,
-      x: direction < 0 ? 200 : -200,
+      x: direction < 0 ? '100%' : '-100%',
       opacity: 0,
-      scale: 0.9
+      scale: 0.95
     })
   };
 
@@ -57,44 +57,51 @@ const TestimonialsSection = () => {
     setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
+  // Automatic Slide Logic
+  useEffect(() => {
+    const timer = setInterval(nextTestimonial, 6000);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
+
   return (
-    <section className="bg-white py-20 overflow-hidden">
+    <section className="bg-white py-12 md:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header - Animated Scroll Reveal */}
+        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <p className="text-orange-500 font-extrabold text-sm tracking-[0.2em] uppercase mb-4">
+          <p className="text-orange-500 font-extrabold text-xs md:text-sm tracking-[0.2em] uppercase mb-4">
             Trusted by Businesses
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-900">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
             Our Happy <span className="text-orange-500">Clients</span>
           </h2>
         </motion.div>
  
-        <div className="relative max-w-5xl mx-auto">
-          {/* Navigation Buttons */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* Navigation Buttons - Hidden on Mobile */}
           <button
             onClick={prevTestimonial}
-            className="absolute -left-4 md:-left-20 top-1/2 -translate-y-1/2 z-20 p-4 rounded-full bg-white shadow-xl text-orange-500 hover:bg-orange-500 hover:text-white transition-all border border-orange-100 hidden sm:flex"
+            className="absolute -left-4 lg:-left-24 top-1/2 -translate-y-1/2 z-30 p-3 md:p-4 rounded-full bg-white shadow-xl text-orange-500 hover:bg-orange-500 hover:text-white transition-all border border-orange-100 hidden lg:flex"
           >
-            <ChevronLeft size={32} />
+            <ChevronLeft size={28} />
           </button>
 
           <button
             onClick={nextTestimonial}
-            className="absolute -right-4 md:-right-20 top-1/2 -translate-y-1/2 z-20 p-4 rounded-full bg-white shadow-xl text-orange-500 hover:bg-orange-500 hover:text-white transition-all border border-orange-100 hidden sm:flex"
+            className="absolute -right-4 lg:-right-24 top-1/2 -translate-y-1/2 z-30 p-3 md:p-4 rounded-full bg-white shadow-xl text-orange-500 hover:bg-orange-500 hover:text-white transition-all border border-orange-100 hidden lg:flex"
           >
-            <ChevronRight size={32} />
+            <ChevronRight size={28} />
           </button>
 
           {/* Testimonial Card Container */}
-          <div className="relative min-h-[450px] md:min-h-[400px]">
-            <AnimatePresence initial={false} custom={direction}>
+          {/* Use grid to keep a consistent height based on the largest content */}
+          <div className="relative overflow-visible min-h-[400px] sm:min-h-[380px] md:min-h-[420px]">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
                 custom={direction}
@@ -104,43 +111,42 @@ const TestimonialsSection = () => {
                 exit="exit"
                 transition={{
                   x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.4 }
+                  opacity: { duration: 0.3 }
                 }}
-                className="absolute inset-0"
+                className="w-full"
               >
-                <div className="h-full border-[3px] border-orange-500 rounded-[2.5rem] p-8 md:p-16 bg-white shadow-2xl shadow-orange-500/5 relative flex flex-col items-center text-center">
+                <div className="border-[2px] md:border-[3px] border-orange-500 rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-12 bg-white shadow-2xl shadow-orange-500/5 relative flex flex-col items-center text-center mx-auto">
                   
-                  {/* Decorative Quote Icon */}
-                  <Quote className="absolute top-8 left-8 text-orange-100 w-16 h-16 -z-0" />
+                  {/* Decorative Quote Icon - Resized for Mobile */}
+                  <Quote className="absolute top-4 left-4 md:top-8 md:left-8 text-orange-100 w-10 h-10 md:w-16 md:h-16" />
 
-                  {/* Profile Photo with Animated Ring */}
-                  <div className="relative mb-8">
+                  {/* Profile Photo */}
+                  <div className="relative mb-6 md:mb-8">
                     <motion.div 
-                      animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.2, 0.5] }}
+                      animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.2, 0.4] }}
                       transition={{ duration: 3, repeat: Infinity }}
                       className="absolute inset-0 rounded-full bg-orange-500"
                     />
                     <img 
                       src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].author}
-                      className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white shadow-xl object-cover"
+                      className="relative w-20 h-20 md:w-28 md:h-28 rounded-full border-4 border-white shadow-xl object-cover"
                     />
                   </div>
 
-                  {/* Quote Text */}
-                  <motion.p 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-xl md:text-2xl text-gray-700 italic font-medium leading-relaxed mb-4 relative z-10"
-                  >
-                    "{testimonials[currentIndex].quote}"
-                  </motion.p>
+                  {/* Quote Text - Responsive Font Sizes */}
+                  <div className="flex-grow flex items-center">
+                    <p className="text-lg md:text-xl lg:text-2xl text-gray-700 italic font-medium leading-relaxed mb-6">
+                      "{testimonials[currentIndex].quote}"
+                    </p>
+                  </div>
 
                   {/* Author Details */}
                   <div className="mt-auto">
-                    <h4 className="text-2xl font-bold text-gray-900">{testimonials[currentIndex].author}</h4>
-                    <p className="text-orange-500 font-semibold uppercase tracking-wider text-sm mt-1">
+                    <h4 className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">
+                      {testimonials[currentIndex].author}
+                    </h4>
+                    <p className="text-orange-500 font-semibold uppercase tracking-wider text-[10px] md:text-xs mt-1">
                       {testimonials[currentIndex].position}
                     </p>
                   </div>
@@ -150,8 +156,8 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Custom Pagination Bars */}
-        <div className="flex justify-center gap-3 mt-12">
+        {/* Responsive Pagination Bars */}
+        <div className="flex justify-center gap-2 md:gap-3 mt-8 md:mt-12">
           {testimonials.map((_, index) => (
             <button
               key={index}
@@ -159,14 +165,14 @@ const TestimonialsSection = () => {
                 setDirection(index > currentIndex ? 1 : -1);
                 setCurrentIndex(index);
               }}
-              className="group py-4"
+              className="py-2"
             >
               <motion.div
                 animate={{ 
-                  width: currentIndex === index ? 40 : 12,
+                  width: currentIndex === index ? (window.innerWidth < 768 ? 30 : 40) : 10,
                   backgroundColor: currentIndex === index ? "#f97316" : "#e5e7eb"
                 }}
-                className="h-2 rounded-full transition-all duration-300"
+                className="h-1.5 md:h-2 rounded-full transition-all duration-300"
               />
             </button>
           ))}

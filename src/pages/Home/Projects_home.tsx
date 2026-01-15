@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Added useEffect
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -16,6 +16,15 @@ const ProjectsSection = () => {
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % projects.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
 
+  // --- Automatic Sliding Logic ---
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000); // Changes slide every 5 seconds
+
+    return () => clearInterval(timer); // Cleanup on unmount
+  }, [currentSlide]); // Reset timer if user manually clicks a dot
+
   const getVisibleProjects = () => {
     const visible = [];
     for (let i = -1; i <= 1; i++) {
@@ -29,7 +38,7 @@ const ProjectsSection = () => {
     <section className="bg-white py-10 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header - Animated Entrance */}
+        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,8 +70,8 @@ const ProjectsSection = () => {
                     animate={{
                       opacity: isCenter ? 1 : 0.6,
                       scale: isCenter ? 1 : 0.8,
-                      x: project.position * 350, // Distance from center
-                      rotateY: project.position * -25, // 3D rotation
+                      x: project.position * 350, 
+                      rotateY: project.position * -25,
                       z: isCenter ? 0 : -200,
                       zIndex: isCenter ? 30 : 10,
                     }}
@@ -96,16 +105,22 @@ const ProjectsSection = () => {
             </AnimatePresence>
           </div>
 
-          {/* Nav Buttons */}
-          <button onClick={prevSlide} className="absolute left-0 md:left-10 z-50 w-14 h-14 bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white transition-all shadow-xl">
+          {/* Nav Buttons - MODIFIED: hidden on small screens, flex on medium+ */}
+          <button 
+            onClick={prevSlide} 
+            className="hidden md:flex absolute left-0 md:left-10 z-50 w-14 h-14 bg-white border-2 border-orange-500 rounded-full items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white transition-all shadow-xl"
+          >
             <ChevronLeft size={30} />
           </button>
-          <button onClick={nextSlide} className="absolute right-0 md:right-10 z-50 w-14 h-14 bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white transition-all shadow-xl">
+          <button 
+            onClick={nextSlide} 
+            className="hidden md:flex absolute right-0 md:right-10 z-50 w-14 h-14 bg-white border-2 border-orange-500 rounded-full items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white transition-all shadow-xl"
+          >
             <ChevronRight size={30} />
           </button>
         </div>
 
-        {/* Interactive Progress Bar */}
+        {/* Progress Bar */}
         <div className="flex justify-center items-center gap-3 mt-4">
           {projects.map((_, index) => (
             <button
