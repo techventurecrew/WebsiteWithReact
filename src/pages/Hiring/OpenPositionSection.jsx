@@ -9,7 +9,7 @@ const OpenPositionsSection = () => {
             title: 'Frontend Developer',
             type: 'Full-time',
             description: 'Building modern, responsive user interfaces using React and Framer Motion. Focus on performance and smooth UX.',
-            location: 'Remote / Noida',
+            location: 'Remote / Meerut',
             salary: 'Competitive'
         },
         {
@@ -41,7 +41,7 @@ const OpenPositionsSection = () => {
             title: 'App Developer',
             type: 'Full-time',
             description: 'Developing cross-platform mobile applications that provide seamless experiences on both iOS and Android.',
-            location: 'Remote / Noida',
+            location: 'Remote / Meerut',
             salary: 'Competitive'
         },
         {

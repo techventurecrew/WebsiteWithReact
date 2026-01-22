@@ -43,14 +43,14 @@ const HeroSection = () => {
                         >
                             <span className="text-black">Transform Your Business with Fast,</span>
                             <br />
-                            <span className="text-orange-500 underline decoration-orange-200 decoration-4 underline-offset-8">
-                                Affordable IT Solutions.
+                            <span className="text-black decoration-4 underline-offset-8">
+                                Affordable IT Solutions
                             </span>
                         </motion.h1>
 
                         <motion.p
                             variants={itemVariants}
-                            className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl"
+                            className="text-lg sm:text-xl text-orange-500 leading-relaxed max-w-2xl"
                         >
                             Your Trusted Online Partner for complete digital success. Crew Techventure is a leading IT services
                             company in India, delivering end-to-end IT solutions that help small businesses and enterprises thrive

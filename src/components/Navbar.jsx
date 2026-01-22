@@ -109,8 +109,8 @@ const Navbar = () => {
                             whileTap={{ scale: 0.95 }}
                             onClick={() => window.location.href = '/contact'}
                             className={`px-8 py-3 rounded-full font-bold text-sm lg:text-base shadow-lg transition-all duration-500 ${isPastHero
-                                    ? 'bg-orange-500 text-white shadow-orange-500/20'
-                                    : 'bg-white text-orange-500 shadow-black/10'
+                                ? 'bg-orange-500 text-white shadow-orange-500/20'
+                                : 'bg-white text-orange-500 shadow-black/10'
                                 }`}
                         >
                             Get Started
@@ -165,3 +165,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

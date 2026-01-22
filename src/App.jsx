@@ -17,7 +17,7 @@ import Hiring from './pages/Hiring/Hiring';
 import './styles/animations.css';
 
 // ============================================
-// 1. IMPROVED CUSTOM CURSOR (Tech Style)
+// 1. CUSTOM CURSOR (Always Active)
 // ============================================
 const CustomCursor = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -56,103 +56,7 @@ const CustomCursor = () => {
 };
 
 // ============================================
-// 2. LOADING ANIMATION COMPONENT
-// ============================================
-const LoadingAnimation = ({ onLoadingComplete }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const [message, setMessage] = useState("Ready to enter CrewTechventure");
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleLogoClick = () => {
-    setIsClicked(true);
-    setMessage("Let's go");
-    setTimeout(() => onLoadingComplete(), 2000);
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%)',
-      }}
-    >
-      <div className="relative z-10 flex flex-col items-center">
-        {/* Logo Interaction Area */}
-        <motion.div
-          className="relative cursor-pointer"
-          onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
-          onClick={handleLogoClick}
-          animate={isClicked ? {
-            scale: [1, 1.2, 0],
-            rotate: [0, 1080],
-            opacity: [1, 1, 0]
-          } : {
-            scale: isHovered ? 1.05 : 1
-          }}
-          transition={{ duration: isClicked ? 2 : 0.4, ease: "easeInOut" }}
-        >
-          {/* Animated Ambient Glow behind Logo */}
-          <motion.div
-            className="absolute inset-0 rounded-full bg-orange-600/20 blur-3xl"
-            animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
-
-          {/* The Main Logo Image */}
-          <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
-            <img
-              src="/Images/crew.png"
-              alt="CrewTechVenture Logo"
-              className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(249,115,22,0.5)]"
-            // No more fallback CT text here; it strictly shows your image
-            />
-
-            {/* Spinning Outer Border - Only visible when NOT clicked */}
-            {!isClicked && (
-              <svg className="absolute inset-0 w-full h-full -rotate-90">
-                <motion.circle
-                  cx="50%"
-                  cy="50%"
-                  r="48%"
-                  stroke="#f97316"
-                  strokeWidth="2"
-                  fill="transparent"
-                  strokeDasharray="10 20"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                />
-              </svg>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Text Area */}
-        <motion.div
-          className="mt-12 text-center"
-          animate={isClicked ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-        >
-          <h2 className="text-2xl md:text-4xl font-bold text-orange-500 tracking-wider">
-            {message}
-          </h2>
-          {!isClicked && (
-            <motion.p
-              className="text-orange-300/60 mt-4 flex items-center justify-center gap-2 text-lg"
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Click Logo to Start <span>→</span>
-            </motion.p>
-          )}
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-};
-// ============================================
-// 3. PARTICLE NETWORK BACKGROUND
+// 2. PARTICLE NETWORK BACKGROUND
 // ============================================
 const ParticleNetworkBackground = () => {
   const canvasRef = useRef(null);
@@ -185,72 +89,39 @@ const ParticleNetworkBackground = () => {
 };
 
 // ============================================
-// 5. TECH GRID BACKGROUND COMPONENT
+// 3. TECH GRID BACKGROUND
 // ============================================
 const GridBackground = () => {
   return (
     <div className="fixed inset-0 -z-10 w-full h-full bg-gray-50 pointer-events-none">
-      {/* The animated grid layer */}
       <div className="absolute inset-0 bg-tech-grid" />
-
-      {/* Subtle ambient orange glow to add depth */}
       <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-orange-200/20 blur-[120px] rounded-full" />
     </div>
   );
 };
+
 // ============================================
-// 4. MAIN APP LOGIC WRAPPER
+// 4. MAIN APP LOGIC (CLEANED)
 // ============================================
 const AppContent = () => {
-  const [isHomeLoading, setIsHomeLoading] = useState(true);
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
 
-  // Control scrolling and body styles
   useEffect(() => {
-    // We only hide the cursor and lock scroll if we are ON the home page AND it's loading
-    if (isHomePage && isHomeLoading) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.cursor = 'default';
-    } else {
-      // On every other page, or when home is done loading:
-      document.body.style.overflow = 'auto';
-      document.body.style.cursor = 'none'; // Activates the Custom Cursor
-    }
-  }, [isHomePage, isHomeLoading, location.pathname]);
-
-  // Reset loading ONLY when navigating TO Home from another page
-  useEffect(() => {
-    if (isHomePage) {
-      setIsHomeLoading(true);
-    } else {
-      // If we are on Services, About, etc., we are definitely not "Home Loading"
-      setIsHomeLoading(false);
-    }
-  }, [location.pathname]);
-
-  const showNavAndFooter = !(isHomePage && isHomeLoading);
+    // Normal scroll behavior and custom cursor activation
+    document.body.style.overflow = 'auto';
+    document.body.style.cursor = 'none';
+  }, []);
 
   return (
     <>
       <GridBackground />
       <ParticleNetworkBackground />
 
-      {/* Logic Change: 
-          Show cursor if:
-          1. We are NOT on the home page (About, Services, etc.)
-          2. OR we are on the home page and it's FINISHED loading
-      */}
-      {(!isHomePage || !isHomeLoading) && <CustomCursor />}
-
-      <AnimatePresence>
-        {isHomePage && isHomeLoading && (
-          <LoadingAnimation onLoadingComplete={() => setIsHomeLoading(false)} />
-        )}
-      </AnimatePresence>
+      {/* Custom Cursor always visible */}
+      <CustomCursor />
 
       <div className="flex flex-col min-h-screen relative">
-        {showNavAndFooter && <Navbar />}
+        <Navbar />
 
         <main className="flex-grow relative z-10">
           <Routes>
@@ -263,7 +134,7 @@ const AppContent = () => {
           </Routes>
         </main>
 
-        {showNavAndFooter && <FooterSection />}
+        <FooterSection />
       </div>
     </>
   );

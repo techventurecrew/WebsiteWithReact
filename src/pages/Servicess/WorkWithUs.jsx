@@ -39,7 +39,7 @@ const WorkWithUsBanner = () => {
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight"
                 >
-                    Wanna work for us?..
+                    Wanna work for us?
                 </motion.h2>
 
                 {/* Description */}

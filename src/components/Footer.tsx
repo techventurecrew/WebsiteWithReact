@@ -95,7 +95,7 @@ const FooterSection = () => {
                             </a>
                             <div className="flex items-center gap-3 text-gray-400">
                                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-orange-500"><MapPin size={18}/></div>
-                                <span className="font-semibold">Noida, UP, India</span>
+                                <span className="font-semibold">Meerut(U.P.), India</span>
                             </div>
                         </div>
                     </motion.div>
@@ -130,7 +130,7 @@ const FooterSection = () => {
                             {socialLinks.map((social, index) => (
                                 <motion.a
                                     key={index}
-                                    href={social.href}
+                                    href={social.href} target='_blank'
                                     whileHover={{ y: -5, backgroundColor: "#f97316" }}
                                     className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 transition-colors border border-white/5"
                                 >
