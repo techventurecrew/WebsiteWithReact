@@ -9,7 +9,7 @@ const AboutHeader = () => {
     ];
 
     return (
-        <section className="bg-transparent pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section className="bg-transparent pt-28 pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -18,7 +18,7 @@ const AboutHeader = () => {
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="space-y-8"
+                        className="space-y-5"
                     >
                         <div className="inline-block px-4 py-2 bg-orange-100 rounded-xl">
                             <span className="text-orange-600 font-bold tracking-widest text-sm uppercase">Our Identity</span>
