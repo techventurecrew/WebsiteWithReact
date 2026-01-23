@@ -26,8 +26,8 @@ const HeroSection = () => {
 
     return (
         <section className="min-h-screen flex items-center overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 pt-16 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div className="max-w-7xl mx-auto px-4 pt-16 sm:px-6 lg:px-8 w-full">
+                <div className="grid lg:grid-cols-2 gap-4 lg:gap-2 items-center">
 
                     {/* Left Content */}
                     <motion.div
@@ -85,21 +85,21 @@ const HeroSection = () => {
 
                     {/* Right Content - Lottie Animation */}
                     <motion.div
-                        className="flex justify-center lg:justify-end"
-                        initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-                        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                        className="flex justify-center lg:justify-end relative"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
                         viewport={{ once: true }}
                     >
-                        <div className="relative w-[350px] h-[350px] sm:w-[500px] sm:h-[500px]">
+                        <div className="relative w-[400px] h-[400px] sm:w-[650px] sm:h-[650px] lg:w-[700px] lg:h-[600px] lg:-mr-16">
                             {/* Decorative Background Blur */}
-                            <div className="absolute inset-0 bg-orange-200 blur-[100px] rounded-full opacity-30 animate-pulse" />
+                            <div className="absolute inset-0 bg-orange-200 blur-[100px] rounded-full opacity-40 animate-pulse" />
 
                             <DotLottieReact
-                                src="https://lottie.host/f7c1abcd-35dd-4326-a9e4-33967bdb0626/vIeaObnyYT.lottie"
+                                src="https://lottie.host/c940d244-17e6-4aac-a312-1e868d4574d5/slnQqb69pS.lottie"
                                 loop
                                 autoplay
-                                className="relative z-10"
+                                className="relative z-10 w-full h-full object-contain"
                             />
                         </div>
                     </motion.div>

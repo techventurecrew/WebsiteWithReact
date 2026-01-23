@@ -2,6 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const AboutHeader = () => {
+
+    const floatingWords = [
+        "Creative", "Future-Ready", "Visionary",
+        "Imagination", "Cutting-Edge", "Strategic Thinking"
+    ];
+
     return (
         <section className="bg-transparent pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto">
@@ -30,14 +36,41 @@ const AboutHeader = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1 }}
-                        className="relative flex justify-center lg:justify-end"
+                        className="relative flex justify-center lg:justify-end h-[600px] items-center"
                     >
+                        {/* 1. Floating Words - Pop-up Animation */}
+                        {floatingWords.map((word, index) => (
+                            <motion.div
+                                key={index}
+                                className="absolute z-30 px-4 py-2 bg-white/80 backdrop-blur-md border border-orange-200 rounded-full shadow-lg text-orange-600 font-bold text-sm md:text-base whitespace-nowrap"
+                                initial={{ opacity: 0, scale: 0, y: 20 }}
+                                animate={{
+                                    opacity: [0, 1, 1, 0],
+                                    scale: [0.5, 1.1, 1, 0.8],
+                                    y: [-20, -120 - (index * 20)], // Words upar float karenge
+                                    x: index % 2 === 0 ? [0, 30, -10] : [0, -30, 10] // Thoda zigzag effect
+                                }}
+                                transition={{
+                                    duration: 5,
+                                    repeat: Infinity,
+                                    delay: index * 1.2, // Ek ke baad ek aayenge
+                                    ease: "easeInOut"
+                                }}
+                                style={{
+                                    left: `${20 + (index * 12)}%`, // Horizontal spread
+                                    bottom: '30%'
+                                }}
+                            >
+                                {word}
+                            </motion.div>
+                        ))}
+
                         <motion.div
                             animate={{ y: [0, -15, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             className="relative w-full max-w-[500px] aspect-square bg-white/60 backdrop-blur-2xl rounded-[3.5rem] border-2 border-orange-100 shadow-2xl flex items-center justify-center p-6 overflow-hidden"
                         >
-                            {/* 1. Animated Geometric Background */}
+                            {/* 2. Animated Geometric Background */}
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <motion.div
                                     animate={{ rotate: 360 }}
@@ -51,16 +84,13 @@ const AboutHeader = () => {
                                 />
                             </div>
 
-                            {/* 2. The Digital Core - Your Logo Centralized */}
+                            {/* 3. The Digital Core - Logo */}
                             <div className="relative z-10 w-48 h-48 flex items-center justify-center">
-                                {/* Outer Pulsing Ring */}
                                 <motion.div
                                     animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
                                     transition={{ duration: 3, repeat: Infinity }}
                                     className="absolute inset-0 bg-orange-500 rounded-full blur-3xl"
                                 />
-
-                                {/* Logo Image */}
                                 <motion.img
                                     src="/Images/crew.png"
                                     alt="Crew Logo"
@@ -70,26 +100,10 @@ const AboutHeader = () => {
                                 />
                             </div>
 
-                            {/* 3. Floating Tech Particles (SVG based) */}
-                            <div className="absolute inset-0 z-0 opacity-20">
-                                {[...Array(6)].map((_, i) => (
-                                    <motion.div
-                                        key={i}
-                                        className="absolute w-2 h-2 bg-orange-500 rounded-full"
-                                        animate={{
-                                            x: [Math.random() * 400, Math.random() * 400],
-                                            y: [Math.random() * 400, Math.random() * 400],
-                                            opacity: [0, 1, 0]
-                                        }}
-                                        transition={{ duration: 5 + i, repeat: Infinity }}
-                                    />
-                                ))}
-                            </div>
-
                             {/* Status Tag */}
-                            <div className="absolute top-10 right-10 bg-white/90 px-4 py-2 rounded-2xl shadow-lg border border-orange-100 z-20">
+                            {/* <div className="absolute top-10 right-10 bg-white/90 px-4 py-2 rounded-2xl shadow-lg border border-orange-100 z-20">
                                 <p className="text-orange-600 font-black text-xs uppercase tracking-tighter">STATUS: INNOVATING</p>
-                            </div>
+                            </div> */}
                         </motion.div>
                     </motion.div>
 
