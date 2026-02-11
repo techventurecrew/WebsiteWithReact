@@ -1,67 +1,118 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Figma } from 'lucide-react';
 
 const ProjectsSection = () => {
-    const [activeCategory, setActiveCategory] = useState('Graphic Designing'); // Default category set to your work
+    const [activeCategory, setActiveCategory] = useState('Graphic Design');
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const categories = [
         'Web Development',
         'App Development',
-        'Graphic Designing',
-        'SEO Handeling'
+        'Graphic Design',
+        'UI/UX Design',
+        'Data Analytics'
     ];
 
     const projects = {
-        'Graphic Designing': [
+        'Web Development': [
             {
-                id: 10,
-                title: 'Crew Brand Identity',
-                description: 'Complete visual identity including logo and brand colors.',
-                image: '/Images/project_5.png', // Image_54597e.png
-                tags: ['Branding', 'Logo']
+                id: 1,
+                title: 'Soso Click',
+                description: 'A professional photography portfolio featuring high-resolution galleries and service booking.',
+                image: '/Images/soso_clicks.png', // Add a screenshot here
+                tags: ['Next.js', 'Photography'],
+                liveLink: 'https://soso-click-tyka.vercel.app/',
             },
             {
-                id: 11,
-                title: 'Rèel Coffee Poster',
-                description: 'Premium coffee packaging and promotional poster design.',
-                image: '/Images/project_3.png', // image (6).jpg
-                tags: ['Poster', 'Marketing']
-            },
-            {
-                id: 12,
-                title: 'Megamere Product Visualization',
-                description: 'Creative product shoot and edit for luxury fragrance.',
-                image: '/Images/project_2.png', // unnamed (1).jpg
-                tags: ['Product Design', 'Visuals']
-            },
-            {
-                id: 13,
-                title: 'Stella Essence',
-                description: 'Minimalist and refreshing aesthetic for perfume branding.',
-                image: '/Images/project_1.png', // unnamed (3).jpg
-                tags: ['Digital Art', 'Graphics']
-            },
-            {
-                id: 14,
-                title: 'Tech Gadget Launch',
-                description: 'Packaging concept for high-end audio devices.',
-                image: '/Images/project_4.png', // image (2).jpg
-                tags: ['Packaging', '3D Concept']
+                id: 2,
+                title: 'Oneness Solar Power',
+                description: 'Sustainable energy solutions landing page for commercial and residential solar projects.',
+                image: '/Images/Website_1.jpg',
+                tags: ['Sustainability', 'React'],
+                liveLink: 'https://www.onenesssolarpower.com/', // Add your live link if any
             }
         ],
-        'Web Development': [
-            { id: 1, title: 'E-Commerce Platform', description: 'Seamless shopping experience.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800', tags: ['Web', 'UI/UX'] },
-            { id: 2, title: 'Corporate Portal', description: 'Enterprise level solutions.', image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800', tags: ['Business', 'React'] }
+        'App Development': [
+            { id: 20, title: 'Fitness Tracker', description: 'Cross-platform mobile app for health monitoring.', image: 'https://images.unsplash.com/photo-1510511459019-5dee9954889c?w=800', tags: ['React Native', 'Firebase'] }
         ],
-        // ... Baki categories ke liye bhi aap aise hi images add kar sakte ho
+        'Graphic Design': [
+            { id: 10, title: 'Crew Brand Identity', description: 'Complete visual identity including logo and brand colors.', image: '/Images/project_5.png', tags: ['Branding', 'Logo'] },
+            { id: 11, title: 'Rèel Coffee Poster', description: 'Premium coffee packaging and promotional poster design.', image: '/Images/project_3.png', tags: ['Poster', 'Marketing'] },
+            { id: 12, title: 'Megamere Visuals', description: 'Creative product shoot and edit for luxury fragrance.', image: '/Images/project_2.png', tags: ['Product Design'] },
+            { id: 13, title: 'Stella Essence', description: 'Minimalist and refreshing aesthetic for perfume branding.', image: '/Images/project_1.png', tags: ['Digital Art'] },
+            { id: 14, title: 'Tech Gadget Launch', description: 'Packaging concept for high-end audio devices.', image: '/Images/project_4.png', tags: ['Packaging'] }
+        ],
+        'UI/UX Design': [
+            {
+                id: 30,
+                title: 'Martha Rae® Portfolio',
+                description: 'Professional high-end specialist portfolio focusing on performance and storytelling.',
+                image: '/Images/Portfolio_2.png',
+                tags: ['Figma', 'Personal Brand'],
+                figmaLink: '#',
+                driveLink: '#'
+            },
+            {
+                id: 31,
+                title: 'Duncan Robert Digital',
+                description: 'Dark-themed creative director portfolio with high-impact visual sections.',
+                image: '/Images/portfolio1.png',
+                tags: ['Figma', 'Designer'],
+                figmaLink: '#',
+                driveLink: '#'
+            },
+            {
+                id: 32,
+                title: 'Eduzin Learning Hub',
+                description: 'Comprehensive educational platform interface for university and online learning.',
+                image: '/Images/Website_design3.png',
+                tags: ['EdTech', 'Dashboard'],
+                figmaLink: '#',
+                driveLink: '#'
+            },
+            {
+                id: 33,
+                title: 'Kiddio & Padora Schools',
+                description: 'Playful and engaging UI design for early childhood education and daycare centers.',
+                image: '/Images/Website_design5.png', // Also covers Website_design1.jpg logic
+                tags: ['Education', 'UI Design'],
+                figmaLink: '#',
+                driveLink: '#'
+            },
+
+            {
+                id: 34,
+                title: 'Timeless Brand Identity',
+                description: 'Luxury branding concept focusing on "Creating timeless brands that inspire".',
+                image: '/Images/Website_design4.png',
+                tags: ['Branding', 'Strategy'],
+                driveLink: '#'
+            },
+            {
+                id: 35,
+                title: 'Prompt Engineering Masterclass',
+                description: 'Marketing-focused landing page design for technical AI courses.',
+                image: '/Images/Website_design2.png',
+                tags: ['Poster', 'Course Design'],
+                driveLink: '#'
+            },
+        ],
+        'Data Analytics': [
+            {
+                id: 41,
+                title: 'Sales Performance Dashboard',
+                description: 'Visualizing quarterly revenue trends and market growth.',
+                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
+                tags: ['Python', 'Tableau']
+            }
+        ]
     };
 
     const currentProjects = projects[activeCategory] || [];
 
-    const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % currentProjects.length);
-    const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + currentProjects.length) % currentProjects.length);
+    const nextSlide = () => setCurrentSlide((prev) => (currentProjects.length ? (prev + 1) % currentProjects.length : 0));
+    const prevSlide = () => setCurrentSlide((prev) => (currentProjects.length ? (prev - 1 + currentProjects.length) % currentProjects.length : 0));
 
     useEffect(() => {
         if (currentProjects.length <= 1) return;
@@ -72,7 +123,6 @@ const ProjectsSection = () => {
     const getVisibleProjects = () => {
         const visible = [];
         if (currentProjects.length === 0) return [];
-        // Handle single project case
         if (currentProjects.length === 1) return [{ ...currentProjects[0], position: 0 }];
 
         for (let i = -1; i <= 1; i++) {
@@ -89,34 +139,32 @@ const ProjectsSection = () => {
                 {/* Header */}
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
                     <h2 className="text-5xl sm:text-7xl font-extrabold mb-4">
-                        Our <span className="text-orange-500">Projects</span>
+                        Our <span className="text-orange-500">Portfolio</span>
                     </h2>
                     <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto font-medium">
-                        Creative solutions across various domains, tailored for digital excellence.
+                        Explore our creative journey across development, design, and data.
                     </p>
                 </motion.div>
 
                 {/* Category Tabs */}
                 <div className="flex flex-wrap justify-center gap-3 mb-12">
                     {categories.map((category) => (
-                        <motion.button
+                        <button
                             key={category}
-                            whileHover={{ y: -3 }}
-                            whileTap={{ scale: 0.95 }}
                             onClick={() => { setActiveCategory(category); setCurrentSlide(0); }}
-                            className={`relative px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 ${activeCategory === category ? 'text-white' : 'text-orange-500 border-2 border-orange-500 hover:bg-orange-50'}`}
+                            className={`relative px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 z-10 ${activeCategory === category ? 'text-white' : 'text-orange-500 border-2 border-orange-500 hover:bg-orange-50'}`}
                         >
-                            <span className="relative z-10">{category}</span>
+                            <span className="relative z-20">{category}</span>
                             {activeCategory === category && (
-                                <motion.div layoutId="activePill" className="absolute inset-0 bg-orange-500 rounded-full shadow-lg shadow-orange-500/30" />
+                                <motion.div layoutId="activePill" className="absolute inset-0 bg-orange-500 rounded-full shadow-lg shadow-orange-500/30 z-10" />
                             )}
-                        </motion.button>
+                        </button>
                     ))}
                 </div>
 
                 {/* Carousel Area */}
-                <div className="relative h-[550px] flex items-center justify-center">
-                    <div className="relative w-full max-w-[450px] h-full flex items-center justify-center [perspective:1200px]">
+                <div className="relative h-[700px] flex items-center justify-center">
+                    <div className="relative w-full max-w-[550px] h-full flex items-center justify-center [perspective:1200px]">
                         <AnimatePresence mode="popLayout">
                             {getVisibleProjects().map((project) => {
                                 const isCenter = project.position === 0;
@@ -139,12 +187,8 @@ const ProjectsSection = () => {
                                     >
                                         <div className={`bg-white rounded-[2.5rem] border-4 ${isCenter ? 'border-orange-500 shadow-2xl' : 'border-gray-200'} overflow-hidden`}>
 
-                                            {/* Image Container with No-Crop Logic */}
-                                            <div className="h-64 bg-gray-50 flex items-center justify-center relative overflow-hidden group">
-                                                {/* Blur Background */}
+                                            <div className="h-64 bg-black flex items-center justify-center relative overflow-hidden group">
                                                 <img src={project.image} alt="" className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-20 scale-125" />
-
-                                                {/* Main Poster (Full View) */}
                                                 <img
                                                     src={project.image}
                                                     alt={project.title}
@@ -153,7 +197,21 @@ const ProjectsSection = () => {
                                             </div>
 
                                             <div className="p-6">
-                                                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                                                <div className="flex justify-between items-start mb-2">
+                                                    <h3 className="text-xl font-bold">{project.title}</h3>
+                                                    <div className="flex gap-2">
+                                                        {project.liveLink && (
+                                                            <a href={project.liveLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-orange-500 transition-colors">
+                                                                <ExternalLink size={20} />
+                                                            </a>
+                                                        )}
+                                                        {project.figmaLink && (
+                                                            <a href={project.figmaLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
+                                                                <Figma size={20} />
+                                                            </a>
+                                                        )}
+                                                    </div>
+                                                </div>
                                                 <p className="text-gray-500 mb-4 text-xs leading-relaxed line-clamp-2">{project.description}</p>
                                                 <div className="flex flex-wrap gap-2">
                                                     {project.tags.map((tag, i) => (
@@ -170,7 +228,6 @@ const ProjectsSection = () => {
                         </AnimatePresence>
                     </div>
 
-                    {/* Nav Buttons */}
                     <button onClick={prevSlide} className="hidden md:flex absolute left-4 z-40 w-12 h-12 bg-white border-2 border-orange-500 rounded-full items-center justify-center text-orange-500 shadow-lg hover:bg-orange-500 hover:text-white transition-colors">
                         <ChevronLeft size={24} />
                     </button>
@@ -179,7 +236,6 @@ const ProjectsSection = () => {
                     </button>
                 </div>
 
-                {/* Indicators */}
                 <div className="flex justify-center items-center gap-2 mt-8">
                     {currentProjects.map((_, index) => (
                         <button key={index} onClick={() => setCurrentSlide(index)} className="h-1.5 rounded-full transition-all duration-300 bg-orange-200" style={{ width: index === currentSlide ? '30px' : '8px', backgroundColor: index === currentSlide ? '#f97316' : '#fed7aa' }} />
