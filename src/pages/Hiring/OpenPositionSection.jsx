@@ -113,14 +113,16 @@ const OpenPositionsSection = () => {
                             }}
                             className="group bg-white/80 backdrop-blur-md rounded-[2.5rem] p-8 border-2 border-orange-50 relative transition-all hover:border-orange-500"
                         >
-                            {/* Animated Arrow Button */}
-                            <motion.button
+                            <motion.a
+                                href={position.applyLink} // Yahan link call ho raha hai
+                                target="_blank"           // New tab mein kholne ke liye
+                                rel="noopener noreferrer"
                                 whileHover={{ rotate: 45, scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="absolute top-8 right-8 w-14 h-14 bg-orange-500 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30 text-white"
+                                className="absolute top-8 right-8 w-14 h-14 bg-orange-500 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30 text-white cursor-pointer z-20"
                             >
                                 <ArrowUpRight className="w-7 h-7" strokeWidth={2.5} />
-                            </motion.button>
+                            </motion.a>
 
                             {/* Job Title & Info */}
                             <div className="mb-6">
