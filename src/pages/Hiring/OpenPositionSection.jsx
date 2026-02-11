@@ -10,7 +10,8 @@ const OpenPositionsSection = () => {
             type: 'Full-time',
             description: 'Building modern, responsive user interfaces using React and Framer Motion. Focus on performance and smooth UX.',
             location: 'Remote / Meerut',
-            salary: 'Competitive'
+            salary: 'Competitive',
+            applyLink: 'https://forms.gle/fetoT2kea9YkLs5g7'
         },
         {
             id: 2,
@@ -18,7 +19,8 @@ const OpenPositionsSection = () => {
             type: 'Full-time',
             description: 'Designing scalable server-side architectures and managing databases to power high-traffic digital solutions.',
             location: 'Remote',
-            salary: 'Competitive'
+            salary: 'Competitive', applyLink: 'https://forms.gle/fetoT2kea9YkLs5g7'
+
         },
         {
             id: 3,
@@ -26,7 +28,8 @@ const OpenPositionsSection = () => {
             type: 'Contract',
             description: 'Crafting intuitive user journeys and high-fidelity prototypes that define the visual language of our projects.',
             location: 'Remote',
-            salary: 'Hourly'
+            salary: 'Hourly', applyLink: 'https://forms.gle/fetoT2kea9YkLs5g7'
+
         },
         {
             id: 4,
@@ -34,7 +37,8 @@ const OpenPositionsSection = () => {
             type: 'Full-time',
             description: 'Driving growth through strategic SEO, social media campaigns, and data-driven marketing insights.',
             location: 'Remote',
-            salary: 'Competitive'
+            salary: 'Competitive', applyLink: 'https://forms.gle/fetoT2kea9YkLs5g7'
+
         },
         {
             id: 5,
@@ -42,7 +46,8 @@ const OpenPositionsSection = () => {
             type: 'Full-time',
             description: 'Developing cross-platform mobile applications that provide seamless experiences on both iOS and Android.',
             location: 'Remote / Meerut',
-            salary: 'Competitive'
+            salary: 'Competitive', applyLink: 'https://forms.gle/fetoT2kea9YkLs5g7'
+
         },
         {
             id: 6,
@@ -50,7 +55,8 @@ const OpenPositionsSection = () => {
             type: 'Internship',
             description: 'Transforming complex data sets into actionable insights to help businesses make informed strategic decisions.',
             location: 'Remote',
-            salary: 'Stipend'
+            salary: 'Stipend', applyLink: 'https://forms.gle/fetoT2kea9YkLs5g7'
+
         }
     ];
 
