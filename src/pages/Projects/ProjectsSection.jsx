@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink, Figma } from 'lucide-react';
-
+import { Folder } from 'lucide-react';
 const ProjectsSection = () => {
     const [activeCategory, setActiveCategory] = useState('Graphic Design');
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -51,7 +51,7 @@ const ProjectsSection = () => {
                 image: '/Images/Portfolio_2.png',
                 tags: ['Figma', 'Personal Brand'],
                 figmaLink: '#',
-                driveLink: '#'
+                driveLink: 'https://drive.google.com/file/d/1Z_r5BMIuIO_n0680NSiuyKp-0z7MLcKs/view?usp=sharing'
             },
             {
                 id: 31,
@@ -60,7 +60,7 @@ const ProjectsSection = () => {
                 image: '/Images/portfolio1.png',
                 tags: ['Figma', 'Designer'],
                 figmaLink: '#',
-                driveLink: '#'
+                driveLink: 'https://drive.google.com/file/d/1dNviEkJ_tRg9Pr3tZVF7L5G375Z98jJI/view?usp=sharing'
             },
             {
                 id: 32,
@@ -69,7 +69,7 @@ const ProjectsSection = () => {
                 image: '/Images/Website_design3.png',
                 tags: ['EdTech', 'Dashboard'],
                 figmaLink: '#',
-                driveLink: '#'
+                driveLink: 'https://drive.google.com/file/d/1qo4t8etwkUicVyvtidStR4E_HUvmBtZz/view?usp=sharing'
             },
             {
                 id: 33,
@@ -78,7 +78,7 @@ const ProjectsSection = () => {
                 image: '/Images/Website_design5.png', // Also covers Website_design1.jpg logic
                 tags: ['Education', 'UI Design'],
                 figmaLink: '#',
-                driveLink: '#'
+                driveLink: 'https://drive.google.com/file/d/1wA9YRbVk0H7NqOqSnJp2hEkuMjJnPhN8/view?usp=sharing'
             },
 
             {
@@ -87,7 +87,7 @@ const ProjectsSection = () => {
                 description: 'Luxury branding concept focusing on "Creating timeless brands that inspire".',
                 image: '/Images/Website_design4.png',
                 tags: ['Branding', 'Strategy'],
-                driveLink: '#'
+                driveLink: 'https://drive.google.com/file/d/1ol3XojFrioAf5gkCVTQTfM8cjH0XykCr/view?usp=sharing'
             },
             {
                 id: 35,
@@ -95,7 +95,15 @@ const ProjectsSection = () => {
                 description: 'Marketing-focused landing page design for technical AI courses.',
                 image: '/Images/Website_design2.png',
                 tags: ['Poster', 'Course Design'],
-                driveLink: '#'
+                driveLink: 'https://drive.google.com/file/d/1vhDZVA1OxGrofeSjuhzmxBXbssIShyCi/view?usp=sharing'
+            },
+            {
+                id: 36,
+                title: 'KnitKnot Fashion',
+                description: 'Visual identity and promotional banners for a modern apparel brand.',
+                image: '/Images/Ecommerce_3.png',
+                tags: ['Branding', 'Poster'],
+                driveLink: 'https://drive.google.com/file/d/19kmr_D5SyFOu4KUXzKxTvPfePWgshK4x/view?usp=sharing'
             },
         ],
         'Data Analytics': [
@@ -199,15 +207,16 @@ const ProjectsSection = () => {
                                             <div className="p-6">
                                                 <div className="flex justify-between items-start mb-2">
                                                     <h3 className="text-xl font-bold">{project.title}</h3>
-                                                    <div className="flex gap-2">
+                                                    <div className="flex gap-3 mt-4">
                                                         {project.liveLink && (
-                                                            <a href={project.liveLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-orange-500 transition-colors">
-                                                                <ExternalLink size={20} />
+                                                            <a href={project.liveLink} target="_blank" rel="noreferrer" title="View Live" className="p-2 bg-orange-50 text-orange-500 rounded-full hover:bg-orange-500 hover:text-white transition-all">
+                                                                <ExternalLink size={18} />
                                                             </a>
                                                         )}
-                                                        {project.figmaLink && (
-                                                            <a href={project.figmaLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
-                                                                <Figma size={20} />
+
+                                                        {project.driveLink && (
+                                                            <a href={project.driveLink} target="_blank" rel="noreferrer" title="Drive Resources" className="p-2 bg-blue-50 text-blue-500 rounded-full hover:bg-blue-500 hover:text-white transition-all">
+                                                                <Folder size={18} />
                                                             </a>
                                                         )}
                                                     </div>
