@@ -20,7 +20,7 @@ const ProjectsSection = () => {
                 id: 1,
                 title: 'Soso Click',
                 description: 'A professional photography portfolio featuring high-resolution galleries and service booking.',
-                image: '/Images/soso_clicks.png', // Add a screenshot here
+                // image: '/Images/soso_clicks.png', // Add a screenshot here
                 tags: ['Next.js', 'Photography'],
                 liveLink: 'https://soso-click-tyka.vercel.app/',
             },
