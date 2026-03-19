@@ -89,9 +89,9 @@ const FooterSection = () => {
                                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-orange-500"><Phone size={18}/></div>
                                 <span className="font-semibold">+91 8273943836</span>
                             </a>
-                            <a href="mailto:crewtechventure@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors break-all">
+                            <a href="mailto:crewtechventure@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors ">
                                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-orange-500"><Mail size={18}/></div>
-                                <span className="font-semibold">crewtechventure@gmail.com</span>
+                                <span className="font-semibold whitespace-nowrap">crewtechventure@gmail.com</span>
                             </a>
                             <div className="flex items-center gap-3 text-gray-400">
                                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-orange-500"><MapPin size={18}/></div>
