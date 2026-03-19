@@ -23,5 +23,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
           local-dir: ./dist/
           server-dir: ./public_html/
+          # Ye niche wali line kabhi kabhi zaruri hoti hai
+          protocol: ftp
