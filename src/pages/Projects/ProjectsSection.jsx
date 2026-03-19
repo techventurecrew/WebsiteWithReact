@@ -28,7 +28,7 @@ const ProjectsSection = () => {
                 id: 2,
                 title: 'Oneness Solar Power',
                 description: 'Sustainable energy solutions landing page for commercial and residential solar projects.',
-                image: '/Images/website_1.png',
+                image: '/Images/Website_1.png',
                 tags: ['Sustainability', 'React'],
                 liveLink: 'https://www.onenesssolarpower.com/', // Add your live link if any
             }
