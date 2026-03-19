@@ -1,0 +1,43 @@
+name: Deploy to Hostinger via FTP
+
+on:
+  push:
+    branches:
+      - main  # Agar aapki branch ka naam 'master' hai toh yaha 'master' likhein
+
+jobs:
+  web-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Code checkout (Updated to v4 to avoid Node 20 deprecation)
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Node.js setup
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Ya '22' agar aap latest use kar rahe hain
+
+      # 3. Install dependencies with Peer Dependency fix
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
+
+      # 4. Build the React project
+      # CI=false ensures warnings don't stop the build
+      - name: Build Project
+        run: CI=false npm run build
+
+      # 5. FTP Deploy to Hostinger
+      - name: Sync Files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Local directory: React default 'dist' (Vite) ya 'build' (CRA) hota hai
+          # Apne project ke folder name ke hisaab se check karein
+          local-dir: ./dist/ 
+          server-dir: ./public_html/ # Hostinger ka default folder
