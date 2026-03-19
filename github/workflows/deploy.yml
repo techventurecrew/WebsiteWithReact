@@ -1,0 +1,27 @@
+name: Deploy to Hostinger via FTP
+
+on:
+  push:
+    branches:
+      - main # Jab aap 'git push' karenge, tabhi ye chalega
+
+jobs:
+  web-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: 🏗️ Build Project
+        run: |
+          npm install
+          npm run build
+
+      - name: 🚀 Sync files to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ./public_html/
